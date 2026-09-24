@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atharva Sugar ERP Smart Assistant — Problem, Solution & The Why</title>
+  <title>Atharva Sugar ERP Smart Assistant — Presentation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #090d16;
-      --card-bg: rgba(18, 24, 38, 0.85);
-      --card-border: rgba(56, 189, 248, 0.18);
+      --bg: #070a12;
+      --card-bg: rgba(15, 23, 42, 0.75);
+      --card-border: rgba(56, 189, 248, 0.16);
       --card-border-hover: rgba(56, 189, 248, 0.45);
       --primary: #38bdf8;
-      --primary-glow: rgba(56, 189, 248, 0.25);
+      --primary-glow: rgba(56, 189, 248, 0.3);
       --emerald: #10b981;
-      --emerald-glow: rgba(16, 185, 129, 0.2);
+      --emerald-glow: rgba(16, 185, 129, 0.25);
       --purple: #a855f7;
       --amber: #f59e0b;
-      --red: #ef4444;
+      --rose: #f43f5e;
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --font-heading: 'Outfit', sans-serif;
@@ -28,6 +28,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       background-color: var(--bg);
       color: var(--text);
@@ -38,612 +39,809 @@
       user-select: none;
     }
 
-    .bg-canvas {
+    /* Ambient animated lighting */
+    .ambient-glow {
       position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
-                  radial-gradient(circle at 85% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 45%),
-                  radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.04) 0%, transparent 60%);
-      pointer-events: none; z-index: 0;
+      inset: 0;
+      background: radial-gradient(circle at 12% 15%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
+                  radial-gradient(circle at 88% 85%, rgba(168, 85, 247, 0.09) 0%, transparent 45%),
+                  radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 0;
     }
 
     .grid-lines {
-      position: fixed; inset: 0;
+      position: fixed;
+      inset: 0;
       background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
                         linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none; z-index: 0;
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
     }
 
+    /* Hide speaker notes completely from the slide layout */
+    aside.notes {
+      display: none !important;
+    }
+
+    /* Sleek Top Navigation Header */
     header {
-      position: fixed; top: 0; left: 0; right: 0; height: 56px;
-      padding: 0 2rem;
-      display: flex; justify-content: space-between; align-items: center;
-      background: rgba(9, 13, 22, 0.75);
-      backdrop-filter: blur(12px);
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      padding: 0 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(7, 10, 18, 0.85);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       z-index: 100;
     }
 
     .brand {
-      display: flex; align-items: center; gap: 0.75rem;
-      font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
     }
 
     .brand-badge {
       background: linear-gradient(135deg, #0284c7, #2563eb);
-      color: #fff; padding: 0.2rem 0.55rem; border-radius: 6px;
-      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      color: #fff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      box-shadow: 0 0 14px var(--primary-glow);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .key-pill {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 4px;
+      padding: 0.15rem 0.45rem;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: #e2e8f0;
+    }
+
+    .btn-notes {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--primary);
+      padding: 0.35rem 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-notes:hover {
+      background: rgba(56, 189, 248, 0.25);
+      border-color: var(--primary);
       box-shadow: 0 0 12px var(--primary-glow);
     }
 
-    .header-controls {
-      display: flex; align-items: center; gap: 1.25rem;
-      font-size: 0.85rem; color: var(--text-muted);
-    }
-
-    .btn-icon {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text); padding: 0.35rem 0.75rem; border-radius: 8px;
-      cursor: pointer; font-size: 0.8rem; transition: all 0.2s ease;
-      display: inline-flex; align-items: center; gap: 0.4rem;
-    }
-
-    .btn-icon:hover {
-      background: rgba(56, 189, 248, 0.15);
-      border-color: var(--primary); color: var(--primary);
-    }
-
+    /* Slide Deck Container */
     #deck {
-      position: relative; width: 100vw; height: 100vh; overflow: hidden; z-index: 10;
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 10;
     }
 
     .slide {
-      position: absolute; inset: 0;
-      padding: 5rem 3.5rem 4rem 3.5rem;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      opacity: 0; visibility: hidden;
-      transform: scale(0.97) translateY(12px);
-      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
-                  transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                  visibility 0.45s;
+      position: absolute;
+      inset: 0;
+      padding: 5.5rem 3.5rem 4.5rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.96) translateY(14px);
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.4s;
     }
 
-    .slide.active { opacity: 1; visibility: visible; transform: scale(1) translateY(0); }
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+    }
 
     .slide-content {
-      width: 100%; max-width: 1200px; height: 100%; max-height: 82vh;
-      display: flex; flex-direction: column; justify-content: center;
+      width: 100%;
+      max-width: 1180px;
+      height: 100%;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    .act-tag {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.25rem 0.85rem; border-radius: 9999px;
-      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.05em; margin-bottom: 0.85rem; width: fit-content;
-    }
-
-    .tag-act1 { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
-    .tag-act2 { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
-    .tag-act3 { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
-    .tag-act4 { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
-
-    h1 {
-      font-family: var(--font-heading); font-size: 3.25rem; font-weight: 800;
-      line-height: 1.15; letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #ffffff 40%, var(--primary) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    /* Section Act Badges */
+    .act-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.9rem;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       margin-bottom: 0.75rem;
+      width: fit-content;
+    }
+
+    .badge-act1 { background: rgba(244, 63, 94, 0.12); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.3); }
+    .badge-act2 { background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-act3 { background: rgba(56, 189, 248, 0.12); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-act4 { background: rgba(168, 85, 247, 0.12); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+
+    /* Clean, High-Impact Typography */
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #ffffff 45%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.85rem;
     }
 
     h2 {
-      font-family: var(--font-heading); font-size: 2rem; font-weight: 700;
-      color: #fff; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.35rem;
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.6rem;
     }
 
     h2::before {
-      content: ""; display: inline-block; width: 5px; height: 1.6rem;
-      background: var(--primary); border-radius: 4px; box-shadow: 0 0 10px var(--primary);
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 1.8rem;
+      background: linear-gradient(180deg, var(--primary), #2563eb);
+      border-radius: 4px;
+      box-shadow: 0 0 12px var(--primary);
     }
 
     h3 {
-      font-family: var(--font-heading); font-size: 1.2rem; font-weight: 600;
-      color: var(--primary); margin-bottom: 0.5rem;
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
     }
-
-    p, li { font-size: 1.05rem; line-height: 1.6; color: #cbd5e1; }
 
     .lead {
-      font-size: 1.3rem; font-weight: 400; color: var(--text-muted);
-      max-width: 900px; margin-bottom: 1.75rem;
+      font-size: 1.22rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.75rem;
     }
 
+    /* Grids & Cards */
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; width: 100%; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; width: 100%; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; width: 100%; }
 
     .card {
-      background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 14px; padding: 1.5rem; backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); transition: all 0.3s ease;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
     }
 
-    .card:hover { border-color: var(--card-border-hover); transform: translateY(-2px); }
+    .card:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.1);
+    }
 
     .card-accent-emerald { border-top: 3px solid var(--emerald); }
     .card-accent-blue { border-top: 3px solid var(--primary); }
     .card-accent-purple { border-top: 3px solid var(--purple); }
     .card-accent-amber { border-top: 3px solid var(--amber); }
-    .card-accent-red { border-top: 3px solid var(--red); }
+    .card-accent-rose { border-top: 3px solid var(--rose); }
 
-    .analogy-box {
-      background: rgba(56, 189, 248, 0.08); border-left: 4px solid var(--primary);
-      padding: 1rem 1.25rem; border-radius: 0 10px 10px 0; margin: 1rem 0;
-      font-size: 1.05rem; line-height: 1.6;
+    /* Intuitive Analogy Banner */
+    .analogy-banner {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(37, 99, 235, 0.05));
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-left: 4px solid var(--primary);
+      border-radius: 12px;
+      padding: 1.1rem 1.4rem;
+      margin: 1rem 0;
+      font-size: 1.05rem;
+      line-height: 1.6;
     }
 
-    table {
-      width: 100%; border-collapse: separate; border-spacing: 0;
-      border-radius: 12px; overflow: hidden; background: rgba(15, 23, 42, 0.6);
-      border: 1px solid var(--card-border);
+    /* Stepper Flow */
+    .stepper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
     }
 
-    th, td { padding: 0.85rem 1.15rem; text-align: left; }
-    th {
-      background: rgba(30, 41, 59, 0.8); color: var(--primary);
-      font-weight: 600; font-size: 0.85rem; text-transform: uppercase;
-      letter-spacing: 0.05em; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.15rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 0.95rem 1.25rem;
+      transition: all 0.25s ease;
     }
-    td { border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 0.95rem; }
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: rgba(56, 189, 248, 0.04); }
 
+    .step-item:hover {
+      background: rgba(56, 189, 248, 0.05);
+      border-color: rgba(56, 189, 248, 0.25);
+    }
+
+    .step-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #2563eb);
+      color: #070a12;
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px var(--primary-glow);
+    }
+
+    /* Code & Callout Snippets */
+    .code-snippet {
+      background: #040711;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.9rem 1.15rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: #7dd3fc;
+      line-height: 1.5;
+    }
+
+    /* Badges */
     .pill {
-      display: inline-block; padding: 0.2rem 0.6rem; border-radius: 9999px;
-      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      display: inline-block;
+      padding: 0.22rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .pill-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
-    .pill-green { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .pill-green { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
     .pill-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
     .pill-amber { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
-    .pill-red { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .pill-rose { background: rgba(244, 63, 94, 0.15); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.3); }
 
-    .code-box {
-      background: #060911; border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px; padding: 1.15rem; font-size: 0.88rem;
-      font-family: var(--font-mono); color: #7dd3fc; line-height: 1.55;
+    /* Pop-up Speaker Notes Drawer */
+    #notes-drawer {
+      position: fixed;
+      bottom: 64px;
+      right: 2rem;
+      width: 460px;
+      max-height: 340px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--primary);
+      border-radius: 14px;
+      padding: 1.35rem;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.8), 0 0 24px var(--primary-glow);
+      backdrop-filter: blur(20px);
+      z-index: 200;
+      display: none;
+      overflow-y: auto;
     }
 
-    .stepper { display: flex; flex-direction: column; gap: 0.75rem; }
-    .step-item {
-      display: flex; align-items: flex-start; gap: 1rem;
-      background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 10px; padding: 0.85rem 1.1rem;
-    }
-    .step-num {
-      background: var(--primary); color: #090d16; font-weight: 800;
-      width: 28px; height: 28px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; font-size: 0.85rem;
-    }
+    #notes-drawer.open { display: block; }
 
-    #notes-panel {
-      position: fixed; bottom: 60px; right: 2rem; width: 440px; max-height: 320px;
-      background: rgba(15, 23, 42, 0.95); border: 1px solid var(--card-border-hover);
-      border-radius: 12px; padding: 1.25rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(16px); z-index: 90; display: none; overflow-y: auto;
-    }
-    #notes-panel.open { display: block; }
-
+    /* Bottom Floating Navigation Dock */
     footer {
-      position: fixed; bottom: 0; left: 0; right: 0; height: 48px;
-      padding: 0 2rem; display: flex; justify-content: space-between; align-items: center;
-      background: rgba(9, 13, 22, 0.85); border-top: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 0.85rem; color: var(--text-muted); z-index: 100;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 48px;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(7, 10, 18, 0.9);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      z-index: 100;
     }
 
     .progress-track {
-      position: fixed; bottom: 48px; left: 0; right: 0; height: 3px;
-      background: rgba(255, 255, 255, 0.08); z-index: 101;
+      position: fixed;
+      bottom: 48px; left: 0; right: 0;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      z-index: 101;
     }
+
     .progress-bar {
-      height: 100%; background: linear-gradient(90deg, #38bdf8, #10b981);
-      width: 0%; transition: width 0.3s ease;
+      height: 100%;
+      background: linear-gradient(90deg, #38bdf8, #10b981);
+      width: 0%;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 8px var(--primary);
     }
 
     .nav-btn {
-      background: transparent; border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #fff; padding: 0.35rem 0.75rem; border-radius: 6px; cursor: pointer;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 0.35rem 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.82rem;
+      transition: all 0.2s;
     }
-    .nav-btn:hover { background: var(--primary); color: #090d16; font-weight: 600; }
 
-    .key-shortcut {
-      background: rgba(255, 255, 255, 0.1); border-radius: 4px;
-      padding: 0.15rem 0.4rem; font-size: 0.75rem; color: #e2e8f0; font-family: var(--font-mono);
+    .nav-btn:hover {
+      background: var(--primary);
+      color: #070a12;
+      border-color: var(--primary);
     }
   </style>
 </head>
 <body>
-  <div class="bg-canvas"></div>
+  <div class="ambient-glow"></div>
   <div class="grid-lines"></div>
 
-  <!-- Header -->
+  <!-- Top Header -->
   <header>
     <div class="brand">
-      <span class="brand-badge">Case Study</span>
+      <span class="brand-badge">CASE STUDY</span>
       <span>Atharva Sugar ERP Smart Assistant</span>
     </div>
-    <div class="header-controls">
-      <span><span class="key-shortcut">←</span> <span class="key-shortcut">→</span> Navigate</span>
-      <span><span class="key-shortcut">F</span> Fullscreen</span>
-      <span><span class="key-shortcut">N</span> Speaker Notes</span>
-      <button class="btn-icon" id="toggleNotesBtn">📝 Notes</button>
+    <div class="header-actions">
+      <span><kbd class="key-pill">←</kbd> <kbd class="key-pill">→</kbd> Navigate</span>
+      <span><kbd class="key-pill">F</kbd> Fullscreen</span>
+      <span><kbd class="key-pill">N</kbd> Speaker Notes</span>
+      <button class="btn-notes" id="toggleNotesBtn">📝 Speaker Notes</button>
     </div>
   </header>
 
+  <!-- Progress Bar -->
   <div class="progress-track">
     <div class="progress-bar" id="progressBar"></div>
   </div>
 
   <main id="deck">
 
-    <!-- Slide 1: Title -->
+    <!-- Slide 1: Hero & Title -->
     <section class="slide active" data-title="Title Slide">
       <div class="slide-content" style="text-align: center; align-items: center;">
-        <span class="act-tag tag-act3">Project Presentation • Problem, Solution & The Why</span>
+        <span class="act-badge badge-act3">AI-Powered Factory Automation</span>
         <h1>Atharva Sugar ERP Smart Assistant</h1>
-        <p class="lead" style="text-align: center; margin-bottom: 2rem;">
-          How We Solved Sugar Mill Operational Bottlenecks with an On-Demand AI Co-Pilot: Zero Hallucinations, $0 Cloud Cost, and 100% Privacy.
+        <p class="lead" style="text-align: center; max-width: 850px; margin-bottom: 2rem;">
+          An Intelligent On-Demand Co-Pilot: Step-by-Step SOP Guidance, Video Training, $0 Cloud Cost &amp; Zero Hallucinations.
         </p>
 
-        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem;">
-          <div class="card" style="padding: 1rem 1.75rem; text-align: left; min-width: 200px;">
-            <div style="font-size: 0.8rem; color: var(--red);">ACT I: THE PROBLEM</div>
-            <div style="font-weight: 700; color: #fff;">ERP Complexity &amp; Errors</div>
+        <div class="grid-4" style="max-width: 950px; margin-bottom: 2.2rem;">
+          <div class="card" style="padding: 1.1rem 1.4rem; text-align: left;">
+            <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Query Speed</div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: var(--primary); margin-top: 0.2rem;">&lt; 0.5s Instant</div>
+            <div style="font-size: 0.8rem; color: #cbd5e1; margin-top: 0.2rem;">Sub-second answers</div>
           </div>
-          <div class="card" style="padding: 1rem 1.75rem; text-align: left; min-width: 200px;">
-            <div style="font-size: 0.8rem; color: var(--emerald);">ACT II: THE SOLUTION</div>
-            <div style="font-weight: 700; color: #fff;">AI Co-Pilot + Video Sync</div>
+          <div class="card" style="padding: 1.1rem 1.4rem; text-align: left;">
+            <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Data Accuracy</div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: var(--emerald); margin-top: 0.2rem;">100% Verified</div>
+            <div style="font-size: 0.8rem; color: #cbd5e1; margin-top: 0.2rem;">Zero hallucinations</div>
           </div>
-          <div class="card" style="padding: 1rem 1.75rem; text-align: left; min-width: 200px;">
-            <div style="font-size: 0.8rem; color: var(--primary);">ACT III: THE WHY</div>
-            <div style="font-weight: 700; color: #fff;">RAG, Dual DBs, Local AI</div>
+          <div class="card" style="padding: 1.1rem 1.4rem; text-align: left;">
+            <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Cloud Cost</div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-top: 0.2rem;">$0.00 / Month</div>
+            <div style="font-size: 0.8rem; color: #cbd5e1; margin-top: 0.2rem;">Local factory SLM</div>
           </div>
-          <div class="card" style="padding: 1rem 1.75rem; text-align: left; min-width: 200px;">
-            <div style="font-size: 0.8rem; color: var(--purple);">ACT IV: THE IMPACT</div>
-            <div style="font-weight: 700; color: #fff;">70% Faster Onboarding</div>
+          <div class="card" style="padding: 1.1rem 1.4rem; text-align: left;">
+            <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Training</div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: var(--purple); margin-top: 0.2rem;">Video Sync</div>
+            <div style="font-size: 0.8rem; color: #cbd5e1; margin-top: 0.2rem;">Auto-lights ERP sidebar</div>
           </div>
         </div>
 
-        <div style="font-size: 0.95rem; color: var(--text-muted);">
-          Press <kbd class="key-shortcut">Space</kbd> or <kbd class="key-shortcut">→</kbd> to begin
+        <div style="font-size: 0.92rem; color: var(--text-muted);">
+          Press <kbd class="key-pill">Space</kbd> or <kbd class="key-pill">→</kbd> to begin
         </div>
       </div>
       <aside class="notes">
-        Start with confidence:
-        "Good morning everyone. Today we are presenting the Atharva Sugar ERP Smart Assistant.
-        We have structured this presentation around three key pillars:
-        First, the real-world operational problem inside the sugar factory.
-        Second, our AI-powered solution.
-        And third, the technical 'WHY' — explaining why we chose RAG, why we use two databases, and why we run on local AI for zero cost."
+        Welcome everyone. Today we are presenting the Atharva Sugar ERP Smart Assistant.
+        We will cover the real-world operational problems in sugar factories, our AI-powered solution, and the technical 'WHY' behind our architectural choices.
       </aside>
     </section>
 
-    <!-- Slide 2: The Problem -->
+    <!-- Slide 2: The Problem (Act I) -->
     <section class="slide" data-title="The Problem">
       <div class="slide-content">
-        <span class="act-tag tag-act1">Act I: The Problem Statement</span>
-        <h2>The Chaos of Modern Sugar Mill ERPs</h2>
-        <p class="lead">Sugar factories are intense, continuous operations where software friction causes physical delays.</p>
-
-        <div class="grid-2">
-          <div class="card card-accent-red">
-            <h3>🏢 Massive Multi-Department Complexity</h3>
-            <ul style="margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.6rem;">
-              <li>Operations span <strong>multiple departments</strong>: Core units (Registration, Agriculture, Harvest/Transport, Accounts, Payroll, Stores) plus expanding facilities (Distillery, Co-Gen, Lab, Dispatch).</li>
-              <li>Employees face <strong>hundreds of nested menus, tabs, and data-entry forms</strong>.</li>
-              <li>Every department has unique, strict government and factory compliance rules.</li>
-            </ul>
-          </div>
-
-          <div class="card card-accent-red">
-            <h3>👥 The Seasonal Workforce Reality</h3>
-            <ul style="margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.6rem;">
-              <li>Every harvest season brings <strong>high employee turnover</strong> and dozens of new temporary clerks.</li>
-              <li>New hires are handed <strong>50-page PDF binders</strong> of Standard Operating Procedures (SOPs).</li>
-              <li>No one has time to read 50 pages while hundreds of sugarcane trucks are lined up outside the factory gate.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <aside class="notes">
-        Emphasize the physical reality: A sugar mill isn't a quiet tech office.
-        It runs 24/7 during harvest season. Trucks are lined up outside.
-        If a new weighbridge clerk doesn't know how to tare a truck, the queue spills out onto the highway.
-      </aside>
-    </section>
-
-    <!-- Slide 3: The 3 Costly Consequences -->
-    <section class="slide" data-title="Costly Consequences">
-      <div class="slide-content">
-        <span class="act-tag tag-act1">Act I: The Problem Statement</span>
-        <h2>The 3 Costly Consequences of the Problem</h2>
-        <p class="lead">Why leaving this problem unsolved costs the factory millions every season</p>
+        <span class="act-badge badge-act1">Act I: The Problem Statement</span>
+        <h2>Why Factory Operations Get Delayed</h2>
+        <p class="lead">Sugar mills are continuous 24/7 operations where software friction directly halts physical production.</p>
 
         <div class="grid-3">
-          <div class="card card-accent-amber">
-            <span class="pill pill-amber">Consequence 1</span>
-            <h3 style="margin-top: 0.5rem;">The "Manual Trap"</h3>
-            <p style="font-size: 0.92rem; margin-top: 0.5rem;">50-page PDF manuals sit unread on desktop folders. When staff get stuck, they guess the steps rather than digging through pages.</p>
+          <div class="card card-accent-rose">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📚</div>
+            <h3>50-Page PDF Binders</h3>
+            <p style="font-size: 0.92rem; margin-top: 0.5rem; color: #cbd5e1;">
+              New seasonal workers are handed dense manual binders. Under peak crushing pressure, nobody reads them — they guess instead.
+            </p>
           </div>
 
-          <div class="card card-accent-red">
-            <span class="pill pill-red">Consequence 2</span>
-            <h3 style="margin-top: 0.5rem;">Costly Factory Errors</h3>
-            <p style="font-size: 0.92rem; margin-top: 0.5rem;">Entering the wrong cane tare weight, duplicate purchase orders in Stores, or flawed payment vouchers directly damages mill profitability.</p>
+          <div class="card card-accent-amber">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚠️</div>
+            <h3>Costly Mill Errors</h3>
+            <p style="font-size: 0.92rem; margin-top: 0.5rem; color: #cbd5e1;">
+              Entering wrong cane tare weights, flawed fertilizer plans, or duplicate purchase orders halts truck queues and hurts profitability.
+            </p>
           </div>
 
           <div class="card card-accent-purple">
-            <span class="pill pill-purple">Consequence 3</span>
-            <h3 style="margin-top: 0.5rem;">The Supervisor Drain</h3>
-            <p style="font-size: 0.92rem; margin-top: 0.5rem;">Senior department heads spend up to <strong>40% of their working day</strong> answering repetitive "Where do I click?" questions instead of managing factory output.</p>
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">⏳</div>
+            <h3>Supervisor Burnout</h3>
+            <p style="font-size: 0.92rem; margin-top: 0.5rem; color: #cbd5e1;">
+              Senior department heads lose up to <strong>40% of their workday</strong> answering basic "Where do I click?" questions instead of managing output.
+            </p>
           </div>
         </div>
       </div>
       <aside class="notes">
-        Explain the supervisor drain: When an experienced engineer or accountant is forced to act as an IT helpdesk for junior staff all day, real factory maintenance and auditing slip through the cracks.
+        Set the scene: During peak crushing season, hundreds of cane trucks arrive daily.
+        New clerks face hundreds of ERP menus. Guessing leads to weighbridge halts and financial discrepancies.
       </aside>
     </section>
 
-    <!-- Slide 4: Why Previous Approaches Failed -->
+    <!-- Slide 3: Why Previous Tools Failed (Act I) -->
     <section class="slide" data-title="Why Old Tools Failed">
       <div class="slide-content">
-        <span class="act-tag tag-act1">Act I: The Problem Statement</span>
-        <h2>Why Previous "Solutions" Completely Failed</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Attempted Approach</th>
-              <th>How It Worked</th>
-              <th>Why It Failed in the Factory</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong style="color: #fff;">Paper &amp; PDF Manuals</strong></td>
-              <td>Distribute 50-page SOP documents to all staff</td>
-              <td>Too slow to search during active operations; ignored by workers in a rush.</td>
-            </tr>
-            <tr>
-              <td><strong style="color: #fff;">Traditional Search Bars</strong></td>
-              <td>Keyword text search inside the ERP software</td>
-              <td>Requires exact spelling. Searching <em>"onboard farmer"</em> returns <strong>0 results</strong> because the manual says <em>"Cane Registration"</em>.</td>
-            </tr>
-            <tr>
-              <td><strong style="color: #fff;">Public AI (like ChatGPT)</strong></td>
-              <td>Ask general commercial cloud chatbots</td>
-              <td><strong>Dangerous in a factory!</strong> Public AI has never seen Atharva Sugar's internal rules $\rightarrow$ it <strong>hallucinates fake menus and buttons</strong>.</td>
-            </tr>
-            <tr>
-              <td><strong style="color: #fff;">Classroom Training</strong></td>
-              <td>Hold weekend training lectures for new hires</td>
-              <td>Forgotten within 2 weeks; impossible to schedule during 24/7 seasonal crushing shifts.</td>
-            </tr>
-          </tbody>
-        </table>
+        <span class="act-badge badge-act1">Act I: The Problem Statement</span>
+        <h2>Why Traditional Solutions Failed in the Mill</h2>
+        <p class="lead">Paper, basic search, and public AI all break down under factory conditions.</p>
+
+        <div class="grid-3">
+          <div class="card">
+            <span class="pill pill-rose" style="margin-bottom: 0.6rem;">Attempt 1</span>
+            <h3>Paper &amp; PDF Manuals</h3>
+            <p style="font-size: 0.92rem; color: #cbd5e1; margin-top: 0.4rem;">
+              Too slow to search during active operations. Binders sit in drawers while workers guess the steps.
+            </p>
+          </div>
+
+          <div class="card">
+            <span class="pill pill-amber" style="margin-bottom: 0.6rem;">Attempt 2</span>
+            <h3>Standard Search Bars</h3>
+            <p style="font-size: 0.92rem; color: #cbd5e1; margin-top: 0.4rem;">
+              Requires exact spelling. Searching <em>"onboard farmer"</em> returns <strong>0 results</strong> because the manual says <em>"Cane Registration"</em>.
+            </p>
+          </div>
+
+          <div class="card card-accent-rose">
+            <span class="pill pill-rose" style="margin-bottom: 0.6rem;">Attempt 3</span>
+            <h3>Public ChatGPT</h3>
+            <p style="font-size: 0.92rem; color: #cbd5e1; margin-top: 0.4rem;">
+              <strong>Dangerous in an ERP:</strong> Public AI has never seen Atharva Sugar rules $\rightarrow$ it <strong>hallucinates fake buttons</strong> and leaks payroll data.
+            </p>
+          </div>
+        </div>
       </div>
       <aside class="notes">
-        Highlight why ChatGPT cannot be used out-of-the-box.
-        Show that general AI is actually dangerous here because it will invent convincing-looking procedures that don't exist in Atharva Sugar ERP.
+        Explain why public ChatGPT cannot be used: it guesses plausible-sounding buttons that don't exist and sends confidential factory data to third-party clouds.
       </aside>
     </section>
 
-    <!-- Slide 5: The Solution -->
+    <!-- Slide 4: The Solution (Act II) -->
     <section class="slide" data-title="The Solution">
       <div class="slide-content">
-        <span class="act-tag tag-act2">Act II: The Solution</span>
+        <span class="act-badge badge-act2">Act II: The Solution</span>
         <h2>The Solution: Atharva Sugar ERP Smart Assistant</h2>
-        <p class="lead">An on-demand AI co-pilot embedded directly into the ERP interface</p>
+        <p class="lead">An on-demand AI co-pilot embedded directly inside the ERP interface.</p>
 
-        <div class="grid-2">
-          <div class="card card-accent-emerald">
-            <h3>What It Delivers to Employees</h3>
-            <ul style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.75rem;">
-              <li>💬 <strong>Ask in Everyday Words:</strong> No technical syntax needed. Employees ask naturally in plain English.</li>
-              <li>📋 <strong>Step-by-Step SOP Checklists:</strong> Retrieves verified instructions from Atharva Sugar manuals in 0.5 seconds.</li>
-              <li>🎥 <strong>On-Demand Training Videos:</strong> Watch concise 2-minute video demonstrations right inside the chat.</li>
-              <li>✨ <strong>Smart Screen Sync:</strong> Playing a video <strong>automatically highlights the exact button in the ERP sidebar</strong>!</li>
-            </ul>
-          </div>
-
+        <div class="grid-3">
           <div class="card card-accent-blue">
-            <h3>What It Delivers to Management</h3>
-            <ul style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.75rem;">
-              <li>🔒 <strong>100% Factory Data Privacy:</strong> Salaries and accounts stay strictly inside the mill's local network.</li>
-              <li>💰 <strong>Zero Recurring Cloud Invoices:</strong> Primary AI runs locally for $0 per-question cost.</li>
-              <li>🛡️ <strong>Zero Hallucinations:</strong> The assistant is strictly gated to answer only from verified company SOPs.</li>
-              <li>📊 <strong>Full Audit Control:</strong> Real-time logging of user queries, response latency, and usage stats.</li>
-            </ul>
+            <div style="font-size: 2rem; margin-bottom: 0.4rem;">💬</div>
+            <h3>Plain English Chat</h3>
+            <p style="font-size: 0.92rem; color: #cbd5e1; margin-top: 0.4rem;">
+              Workers ask naturally without learning complex technical syntax or exact menu names.
+            </p>
           </div>
-        </div>
-      </div>
-      <aside class="notes">
-        Notice how this slide speaks to both stakeholders:
-        The left side shows how it makes the employee's life easier.
-        The right side shows how it protects the factory owner's budget, privacy, and compliance.
-      </aside>
-    </section>
 
-    <!-- Slide 6: How the Solution Works in Everyday Practice -->
-    <section class="slide" data-title="Solution in Action">
-      <div class="slide-content">
-        <span class="act-tag tag-act2">Act II: The Solution</span>
-        <h2>How the Solution Works in Everyday Practice</h2>
-        <div class="card card-accent-blue" style="padding: 1.75rem;">
-          <div class="stepper">
-            <div class="step-item">
-              <div class="step-num">1</div>
-              <div>
-                <strong>Factory Clerk types in everyday language:</strong>
-                <p style="color: var(--primary); font-size: 1rem; margin-top: 0.2rem;">"How do I submit a purchase requisition in Stores?"</p>
-              </div>
-            </div>
-            <div class="step-item">
-              <div class="step-num">2</div>
-              <div>
-                <strong>Assistant retrieves official factory SOP:</strong>
-                <p style="color: #cbd5e1; font-size: 0.95rem; margin-top: 0.2rem;">Searches Atharva Sugar's uploaded manual and extracts the exact procedure in 10ms.</p>
-              </div>
-            </div>
-            <div class="step-item">
-              <div class="step-num">3</div>
-              <div>
-                <strong>Delivers a clear 1-2-3 checklist:</strong>
-                <p style="color: #cbd5e1; font-size: 0.95rem; margin-top: 0.2rem;">Step 1: Open Stores in left sidebar &bull; Step 2: Click 'Purchase Requisition' &bull; Step 3: Fill items and submit for approval.</p>
-              </div>
-            </div>
-            <div class="step-item">
-              <div class="step-num">4</div>
-              <div>
-                <strong>(Optional) Watch the 2-minute video with Screen Sync:</strong>
-                <p style="color: var(--emerald); font-size: 0.95rem; margin-top: 0.2rem;">The left sidebar expands and highlights the Stores &gt; PR button on the live ERP screen!</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <aside class="notes">
-        Walk the audience through the 4 steps. Emphasize that there is no steep learning curve for factory workers.
-        If they know how to send a WhatsApp message, they know how to use this assistant.
-      </aside>
-    </section>
-
-    <!-- Slide 7: Scalable Factory Scope & Extensible Departments -->
-    <section class="slide" data-title="Extensible Factory Scope">
-      <div class="slide-content">
-        <span class="act-tag tag-act2">Act II: The Solution</span>
-        <h2>Factory Scope: Modular &amp; Infinitely Extensible</h2>
-        <p class="lead">Pre-configured with core sugar mill operations and dynamically expandable to any number of factory departments.</p>
-
-        <div class="grid-3" style="font-size: 0.88rem;">
-          <div class="card card-accent-blue">
-            <h3 style="font-size: 1.05rem;">1. Registration</h3>
-            <p style="font-size: 0.82rem; color: #94a3b8;">Cane lot registration, farmer land parcels, survey boundary mapping.</p>
-          </div>
           <div class="card card-accent-emerald">
-            <h3 style="font-size: 1.05rem;">2. Agriculture</h3>
-            <p style="font-size: 0.82rem; color: #94a3b8;">Crop planting cycles, field inspection logs, fertilizer schedule alerts.</p>
+            <div style="font-size: 2rem; margin-bottom: 0.4rem;">📋</div>
+            <h3>Verified 1-2-3 Checklists</h3>
+            <p style="font-size: 0.92rem; color: #cbd5e1; margin-top: 0.4rem;">
+              Answers are pulled directly from Atharva Sugar’s official manuals in under 0.5 seconds.
+            </p>
           </div>
-          <div class="card card-accent-amber">
-            <h3 style="font-size: 1.05rem;">3. Harvest / Transport</h3>
-            <p style="font-size: 0.82rem; color: #94a3b8;">Harvest schedules, transport challan tracking, weighbridge tare entries.</p>
-          </div>
+
           <div class="card card-accent-purple">
-            <h3 style="font-size: 1.05rem;">4. Accounts</h3>
-            <p style="font-size: 0.82rem; color: #94a3b8;">Payment voucher entries, bill approvals, general ledger search &amp; exports.</p>
+            <div style="font-size: 2rem; margin-bottom: 0.4rem;">🎥</div>
+            <h3>Video + Screen Sync</h3>
+            <p style="font-size: 0.92rem; color: #cbd5e1; margin-top: 0.4rem;">
+              Watch a 2-minute video in chat while the ERP sidebar <strong>automatically illuminates where to click</strong>!
+            </p>
           </div>
-          <div class="card card-accent-blue">
-            <h3 style="font-size: 1.05rem;">5. Payroll</h3>
-            <p style="font-size: 0.82rem; color: #94a3b8;">Salary processing runs, biometric attendance, PF &amp; ESI compliance.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        Summarize the 3 core pillars: Natural conversation, verified manual checklists, and interactive training video screen sync.
+      </aside>
+    </section>
+
+    <!-- Slide 5: The 4-Step User Journey (Act II) -->
+    <section class="slide" data-title="How It Works">
+      <div class="slide-content">
+        <span class="act-badge badge-act2">Act II: The Solution</span>
+        <h2>How It Works: The 4-Step Experience</h2>
+        <p class="lead">From casual question to verified action in seconds — with automatic department detection.</p>
+
+        <div class="stepper" style="margin-bottom: 1rem;">
+          <div class="step-item">
+            <div class="step-circle">1</div>
+            <div>
+              <strong style="color: #fff; font-size: 1.05rem;">Employee asks any question in everyday language:</strong>
+              <p style="color: var(--primary); font-size: 0.95rem; margin-top: 0.2rem;">"How do I submit a purchase requisition in Stores?"</p>
+            </div>
           </div>
-          <div class="card card-accent-emerald">
-            <h3 style="font-size: 1.05rem;">6. Stores</h3>
-            <p style="font-size: 0.82rem; color: #94a3b8;">Purchase requisitions (PR), goods receipts (GRN), inventory alerts.</p>
+          <div class="step-item">
+            <div class="step-circle">2</div>
+            <div>
+              <strong style="color: #fff; font-size: 1.05rem;">Assistant automatically detects department &amp; searches official SOP:</strong>
+              <p style="color: #cbd5e1; font-size: 0.92rem; margin-top: 0.2rem;">Auto-applies the Stores module filter in Qdrant and pulls verified procedures in 10ms.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-circle">3</div>
+            <div>
+              <strong style="color: #fff; font-size: 1.05rem;">Delivers a verified 1-2-3 checklist:</strong>
+              <p style="color: #cbd5e1; font-size: 0.92rem; margin-top: 0.2rem;">Step 1: Open Stores &bull; Step 2: Click 'Purchase Requisition' &bull; Step 3: Enter items &amp; submit.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-circle">4</div>
+            <div>
+              <strong style="color: #fff; font-size: 1.05rem;">(Optional) Watch video with Automatic Screen Sync:</strong>
+              <p style="color: var(--emerald); font-size: 0.92rem; margin-top: 0.2rem;">The live ERP left sidebar opens and highlights the exact button on screen!</p>
+            </div>
           </div>
         </div>
 
-        <!-- Extensibility Highlight Card -->
-        <div class="card" style="margin-top: 1rem; padding: 1rem 1.4rem; background: rgba(56, 189, 248, 0.06); border: 1px dashed rgba(56, 189, 248, 0.35);">
+        <div class="card" style="padding: 0.85rem 1.25rem; background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.3);">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.4rem;">🎯</span>
+            <div style="font-size: 0.88rem; color: #cbd5e1;">
+              <strong style="color: #34d399;">Automatic Module-Wise Filtering:</strong> 
+              The worker does NOT need to manually click or switch departments! The AI analyzes the intent of any question, automatically switches to the correct department filter, and queries Qdrant without cross-department noise.
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        Highlight the Automatic Module Filtering: The user can type ANY question from any screen.
+        The bot automatically detects the topic, applies the module filter in the background, and gives the verified answer.
+      </aside>
+    </section>
+
+    <!-- Slide 6: Modular & Extensible Scope (Act II) -->
+    <section class="slide" data-title="Extensible Scope">
+      <div class="slide-content">
+        <span class="act-badge badge-act2">Act II: The Solution</span>
+        <h2>Factory Scope: Modular &amp; Infinitely Extensible</h2>
+        <p class="lead">Pre-configured for core sugar mill operations and dynamically expandable to any new department.</p>
+
+        <div class="grid-3" style="font-size: 0.88rem; margin-bottom: 1.25rem;">
+          <div class="card card-accent-blue" style="padding: 1.1rem;">
+            <h3 style="font-size: 1.05rem;">1. Registration</h3>
+            <p style="font-size: 0.85rem; color: #94a3b8;">Cane lot registration, farmer land parcels, survey mapping.</p>
+          </div>
+          <div class="card card-accent-emerald" style="padding: 1.1rem;">
+            <h3 style="font-size: 1.05rem;">2. Agriculture</h3>
+            <p style="font-size: 0.85rem; color: #94a3b8;">Planting cycles, field inspections, fertilizer schedule alerts.</p>
+          </div>
+          <div class="card card-accent-amber" style="padding: 1.1rem;">
+            <h3 style="font-size: 1.05rem;">3. Harvest / Transport</h3>
+            <p style="font-size: 0.85rem; color: #94a3b8;">Harvest tracking, transport challans, weighbridge tare entry.</p>
+          </div>
+          <div class="card card-accent-purple" style="padding: 1.1rem;">
+            <h3 style="font-size: 1.05rem;">4. Accounts</h3>
+            <p style="font-size: 0.85rem; color: #94a3b8;">Voucher entries, bill payments, general ledger search.</p>
+          </div>
+          <div class="card card-accent-blue" style="padding: 1.1rem;">
+            <h3 style="font-size: 1.05rem;">5. Payroll</h3>
+            <p style="font-size: 0.85rem; color: #94a3b8;">Salary processing runs, biometric attendance, PF &amp; ESI.</p>
+          </div>
+          <div class="card card-accent-emerald" style="padding: 1.1rem;">
+            <h3 style="font-size: 1.05rem;">6. Stores</h3>
+            <p style="font-size: 0.85rem; color: #94a3b8;">Purchase requisitions (PR), goods receipts (GRN), inventory.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 1.1rem 1.5rem; background: rgba(56, 189, 248, 0.06); border: 1px dashed rgba(56, 189, 248, 0.4);">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
             <div>
-              <span class="pill pill-green" style="margin-bottom: 0.35rem;">⚡ 100% Dynamically Extensible</span>
-              <strong style="color: #fff; font-size: 1rem; display: block;">Add Any New Department In Seconds (Zero Code Required)</strong>
-              <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 0.2rem;">
-                Easily expand to <strong>Distillery &amp; By-Products, Co-Gen Power, Quality Control Lab, Sales &amp; Dispatch, Workshop Maintenance, Gate Pass</strong>, or custom units.
+              <span class="pill pill-green" style="margin-bottom: 0.3rem;">⚡ Zero-Code Extensibility</span>
+              <strong style="color: #fff; font-size: 1.05rem; display: block;">Add Any New Department In Seconds</strong>
+              <p style="font-size: 0.88rem; color: #cbd5e1; margin-top: 0.2rem;">
+                Expand to <strong>Distillery &amp; By-Products, Co-Gen Power, Quality Control Lab, Sales &amp; Dispatch, Workshop Maintenance</strong> on the fly.
               </p>
             </div>
-            <div style="font-size: 0.82rem; color: var(--primary); background: rgba(15, 23, 42, 0.7); padding: 0.5rem 0.9rem; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.2);">
-              ✓ Auto-indexed in Qdrant<br>✓ Auto-added to Sidebar<br>✓ No redeploy needed
+            <div style="font-size: 0.82rem; color: var(--primary); background: rgba(15, 23, 42, 0.8); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.2);">
+              ✓ Auto-indexed in Qdrant &bull; ✓ Auto-added to Sidebar &bull; ✓ Zero redeployment
             </div>
           </div>
         </div>
       </div>
       <aside class="notes">
-        Highlight extensibility:
-        "A critical strength of our architecture is that it is not hardcoded to just 6 departments.
-        Admins can add any number of new departments and submodules on the fly through the Admin Panel.
-        For example, if the mill adds a Distillery unit, Co-Gen power plant, or Quality Control lab, the admin simply uploads the new manuals and videos.
-        The system dynamically creates vector namespaces in Qdrant and updates the sidebar menu automatically without writing a single line of code!"
+        CRITICAL POINT: Emphasize that the system is NOT hardcoded to 6 departments.
+        Admins can add new departments (Distillery, Co-Gen, Lab, Dispatch) in seconds through the Admin Panel.
+        Uploading new manuals automatically creates vector namespaces without writing code.
       </aside>
     </section>
 
-    <!-- Slide 8: Interactive Videos + Screen Sync -->
-    <section class="slide" data-title="Video & Screen Sync">
+    <!-- Slide 7: Exact Tech Stack & Versions (Engineering Foundation) -->
+    <section class="slide" data-title="Tech Stack & Versions">
       <div class="slide-content">
-        <span class="act-tag tag-act2">Act II: The Solution</span>
-        <h2>Visual Learning: Training Videos + Smart Screen Sync</h2>
-        <div class="grid-2">
-          <div class="card">
-            <h3>On-Demand Video In Chat</h3>
-            <p style="font-size: 0.95rem; margin-top: 0.5rem;">
-              When text isn't enough, workers ask: <em>"Show me the video for Cane Registration"</em>:
-            </p>
-            <ul style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.75rem; font-size: 0.95rem;">
-              <li>High-definition video card rendered inline in chat.</li>
-              <li>Full seeker bar, pause/play, volume, and fullscreen.</li>
-              <li>Tags match module and submodule automatically.</li>
+        <span class="act-badge badge-act2">Engineering Foundation</span>
+        <h2>Technology Architecture &amp; Exact Versions</h2>
+        <p class="lead">Built on modern, hardened enterprise frameworks for speed, data privacy, and zero monthly AI bills.</p>
+
+        <div class="grid-3" style="font-size: 0.88rem; gap: 1rem;">
+          <!-- Frontend Card -->
+          <div class="card card-accent-blue" style="padding: 1.15rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
+              <h3 style="font-size: 1.05rem; margin: 0;">🌐 Frontend Stack</h3>
+              <span class="pill pill-blue">Client</span>
+            </div>
+            <ul style="display: flex; flex-direction: column; gap: 0.35rem; color: #cbd5e1; font-size: 0.85rem;">
+              <li><strong>React:</strong> <code style="color: #38bdf8;">v18.2.0</code></li>
+              <li><strong>Vite Build Tool:</strong> <code style="color: #38bdf8;">v5.2.0</code></li>
+              <li><strong>Tailwind CSS:</strong> <code style="color: #38bdf8;">v3.4.3</code></li>
+              <li><strong>Framer Motion:</strong> <code style="color: #38bdf8;">v11.1.7</code></li>
+              <li><strong>Axios HTTP:</strong> <code style="color: #38bdf8;">v1.6.8</code></li>
+              <li><strong>Lucide Icons:</strong> <code style="color: #38bdf8;">v0.363.0</code></li>
+              <li><strong>Recharts Analytics:</strong> <code style="color: #38bdf8;">v3.8.1</code></li>
             </ul>
           </div>
 
-          <div class="card card-accent-purple">
-            <h3>✨ The Smart Sidebar Sync (Magic Feature)</h3>
-            <p style="font-size: 0.95rem; margin-top: 0.5rem;">
-              When the employee clicks <strong>Play</strong> on a video:
-            </p>
-            <div class="code-box" style="margin-top: 0.75rem; font-size: 0.82rem; color: #d8b4fe;">
-// Chatbot dispatches state update on video play:
-setActiveModule("payroll");
-setActiveSubModule("salary processing");
-// Left sidebar dynamically expands, scrolls to, 
-// and illuminates the Payroll > Salary Processing menu!
+          <!-- Backend Card -->
+          <div class="card card-accent-emerald" style="padding: 1.15rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
+              <h3 style="font-size: 1.05rem; margin: 0;">⚙️ Backend &amp; Core</h3>
+              <span class="pill pill-green">Server</span>
             </div>
-            <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 0.75rem;">
-              Solves the #1 training gap: <em>"I watched the video, but I couldn't find the button on my screen."</em>
-            </p>
+            <ul style="display: flex; flex-direction: column; gap: 0.35rem; color: #cbd5e1; font-size: 0.85rem;">
+              <li><strong>.NET Runtime:</strong> <code style="color: #34d399;">net8.0 (C# 12)</code></li>
+              <li><strong>ASP.NET Core:</strong> <code style="color: #34d399;">v8.0.27</code></li>
+              <li><strong>EF Core (SQL Server):</strong> <code style="color: #34d399;">v8.0.27</code></li>
+              <li><strong>Semantic Kernel:</strong> <code style="color: #34d399;">v1.77.0</code></li>
+              <li><strong>JWT Bearer Auth:</strong> <code style="color: #34d399;">v8.0.27</code></li>
+              <li><strong>BCrypt.Net-Next:</strong> <code style="color: #34d399;">v4.2.0</code></li>
+              <li><strong>AutoMapper:</strong> <code style="color: #34d399;">v13.0.1</code></li>
+            </ul>
+          </div>
+
+          <!-- AI & Embeddings Card -->
+          <div class="card card-accent-purple" style="padding: 1.15rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
+              <h3 style="font-size: 1.05rem; margin: 0;">🧠 AI &amp; Embeddings</h3>
+              <span class="pill pill-purple">Intelligence</span>
+            </div>
+            <ul style="display: flex; flex-direction: column; gap: 0.35rem; color: #cbd5e1; font-size: 0.85rem;">
+              <li><strong>Local SLM:</strong> <code style="color: #c084fc;">Phi-4 Mini (3.8B)</code></li>
+              <li><strong>Local Engine:</strong> <code style="color: #c084fc;">Ollama v0.5+ (:11434)</code></li>
+              <li><strong>Vector Embeddings:</strong> <code style="color: #c084fc;">nomic-embed-text (768-d)</code></li>
+              <li><strong>Cloud Failover 1:</strong> <code style="color: #c084fc;">Groq Llama-3.1-8b</code></li>
+              <li><strong>Cloud Failover 2:</strong> <code style="color: #c084fc;">OpenAI gpt-4o-mini</code></li>
+              <li><strong>Cloud Failover 3:</strong> <code style="color: #c084fc;">Google Gemini 2.0 Flash</code></li>
+              <li><strong>Cloud Failover 4:</strong> <code style="color: #c084fc;">OpenRouter Llama-3.2-1b</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 1rem; font-size: 0.88rem; gap: 1rem;">
+          <!-- Dual Databases -->
+          <div class="card" style="padding: 0.9rem 1.25rem;">
+            <strong style="color: #fff; display: flex; align-items: center; gap: 0.4rem; font-size: 0.95rem;">
+              🗄️ Dual Database Architecture
+            </strong>
+            <div style="display: flex; justify-content: space-between; margin-top: 0.4rem; color: #cbd5e1; font-size: 0.84rem;">
+              <div>• <strong>SQL Server:</strong> Users, Sessions, Chat History, ACL</div>
+              <div>• <strong>Qdrant Cloud:</strong> 768-dim Vectors, Cosine Distance</div>
+            </div>
+          </div>
+
+          <!-- Document Parsers -->
+          <div class="card" style="padding: 0.9rem 1.25rem;">
+            <strong style="color: #fff; display: flex; align-items: center; gap: 0.4rem; font-size: 0.95rem;">
+              📄 Multi-Format Ingestion Parsers
+            </strong>
+            <div style="display: flex; justify-content: space-between; margin-top: 0.4rem; color: #cbd5e1; font-size: 0.84rem;">
+              <div>• <strong>PdfPig:</strong> v0.1.9 (PDF)</div>
+              <div>• <strong>ClosedXML:</strong> v0.105.0 (Excel)</div>
+              <div>• <strong>Mammoth &amp; OpenXml:</strong> v1.11 / v3.3 (Word)</div>
+            </div>
           </div>
         </div>
       </div>
       <aside class="notes">
-        This is a unique differentiator. Explain how the video player doesn't live in a silo — it actively teaches navigation by driving the ERP's own sidebar.
+        Walk through the exact versions: Frontend runs React 18.2 with Vite 5.2 for blazing performance.
+        Backend is ASP.NET Core 8 with Entity Framework Core 8.0.27 and Semantic Kernel 1.77.
+        Local intelligence is powered by Microsoft's Phi-4 Mini (3.8B parameters) and 768-dimensional nomic embeddings.
       </aside>
     </section>
 
-    <!-- Slide 9: Why RAG? -->
+    <!-- Slide 8: Why RAG? (Act III) -->
     <section class="slide" data-title="Why RAG?">
       <div class="slide-content">
-        <span class="act-tag tag-act3">Act III: The Why</span>
+        <span class="act-badge badge-act3">Act III: The Why</span>
         <h2>Why RAG Instead of Plain ChatGPT?</h2>
-        <p class="lead">Why general cloud AI fails in manufacturing, and why RAG is mandatory</p>
+        <p class="lead">Why general cloud AI fails in manufacturing, and why RAG is mandatory for accuracy.</p>
 
-        <div class="analogy-box">
+        <div class="analogy-banner">
           <strong>The "Open-Book Exam" Approach:</strong><br>
-          If you give a student a closed-book exam on Atharva Sugar rules, they guess. Public ChatGPT does the exact same thing: it hallucinates plausible-sounding but fake buttons.<br>
+          If you give a student a closed-book exam on Atharva Sugar rules, they guess. Public ChatGPT does the exact same thing: it hallucinates fake buttons.<br>
           <strong>RAG forces an open-book exam:</strong> The system opens the official company manual, hands the exact page to the AI, and commands: <em>"Answer ONLY from this text."</em>
         </div>
 
         <div class="grid-2" style="margin-top: 1rem;">
-          <div class="card card-accent-red">
-            <h3 style="color: #f87171;">Plain ChatGPT (Closed-Book)</h3>
-            <ul style="font-size: 0.9rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem;">
+          <div class="card card-accent-rose">
+            <h3 style="color: #fb7185;">❌ Plain ChatGPT (Closed-Book)</h3>
+            <ul style="font-size: 0.92rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #cbd5e1;">
               <li>Answers from general internet memory.</li>
-              <li>Invents non-existent ERP buttons &amp; menus.</li>
-              <li>Violates factory Standard Operating Procedures.</li>
+              <li>Invents fake ERP buttons and menu paths.</li>
+              <li>Risks operational halts and compliance errors.</li>
             </ul>
           </div>
           <div class="card card-accent-emerald">
-            <h3 style="color: #34d399;">Our RAG Architecture (Open-Book)</h3>
-            <ul style="font-size: 0.9rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem;">
+            <h3 style="color: #34d399;">✅ Our RAG Architecture (Open-Book)</h3>
+            <ul style="font-size: 0.92rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #cbd5e1;">
               <li>Answers strictly from verified factory PDFs.</li>
               <li>Quotes Atharva Sugar’s exact workflow steps.</li>
               <li>Guarantees 100% adherence to company protocols.</li>
@@ -652,35 +850,35 @@ setActiveSubModule("salary processing");
         </div>
       </div>
       <aside class="notes">
-        Explain the "Why": RAG is not an optional extra; it is the fundamental reason this AI is safe enough to deploy in a production factory.
+        Explain the "Open-Book Exam" concept. It is the core reason our system is safe for factory deployment.
       </aside>
     </section>
 
-    <!-- Slide 10: Why Two Databases? -->
+    <!-- Slide 8: Why Two Databases? (Act III) -->
     <section class="slide" data-title="Why Two Databases?">
       <div class="slide-content">
-        <span class="act-tag tag-act3">Act III: The Why</span>
+        <span class="act-badge badge-act3">Act III: The Why</span>
         <h2>Why Two Databases? (SQL Server + Qdrant)</h2>
-        <p class="lead">Why can't traditional SQL Server do everything by itself?</p>
+        <p class="lead">Why traditional relational databases cannot perform semantic search on their own.</p>
 
-        <div class="analogy-box">
+        <div class="analogy-banner">
           <strong>The Library Analogy:</strong><br>
-          • <strong>SQL Server is the Register Book:</strong> It tracks employee logins, passwords, permissions, and audit logs. It is strict and exact.<br>
-          • <strong>Qdrant is the Expert Librarian:</strong> It has read every manual. When you ask <em>"How do I onboard a farmer?"</em>, it understands you mean <em>"Cane Registration"</em> and pulls the right page in 10ms.
+          • <strong>SQL Server is the Register Book:</strong> Tracks employee logins, passwords, permissions, and audit logs. It is strict and exact.<br>
+          • <strong>Qdrant is the Expert Librarian:</strong> Has read every manual. When you ask <em>"How do I onboard a farmer?"</em>, it knows you mean <em>"Cane Registration"</em> and pulls the right page in 10ms.
         </div>
 
         <div class="grid-2" style="margin-top: 1rem;">
           <div class="card card-accent-blue">
-            <h3>SQL Server (The Filing Cabinet)</h3>
-            <ul style="margin-top: 0.5rem; font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.4rem;">
+            <h3>🗄️ SQL Server (The Filing Cabinet)</h3>
+            <ul style="margin-top: 0.5rem; font-size: 0.92rem; display: flex; flex-direction: column; gap: 0.4rem; color: #cbd5e1;">
               <li>Finds exact keyword matches only.</li>
               <li>"Onboard Farmer" $\neq$ "Cane Registration" (SQL fails!).</li>
               <li>Guarantees ACID security for user accounts &amp; chats.</li>
             </ul>
           </div>
           <div class="card card-accent-emerald">
-            <h3>Qdrant (The Smart Search Brain)</h3>
-            <ul style="margin-top: 0.5rem; font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.4rem;">
+            <h3>🧠 Qdrant (The Smart Search Brain)</h3>
+            <ul style="margin-top: 0.5rem; font-size: 0.92rem; display: flex; flex-direction: column; gap: 0.4rem; color: #cbd5e1;">
               <li>Searches by human meaning, synonyms, and intent.</li>
               <li>Knows "Farmer Onboarding" means "Cane Registration".</li>
               <li>Restricts searches strictly to the active ERP department.</li>
@@ -689,300 +887,383 @@ setActiveSubModule("salary processing");
         </div>
       </div>
       <aside class="notes">
-        The Library analogy makes this instantly understandable to anyone in management:
-        You need the register book for security, but you need the librarian to understand what people mean.
+        The Library analogy makes this instantly clear: SQL is the ledger for security; Qdrant is the brain for meaning.
       </aside>
     </section>
 
-    <!-- Slide 11: Why Local AI? -->
+    <!-- Slide 9: Why Local AI? (Act III) -->
     <section class="slide" data-title="Why Local AI?">
       <div class="slide-content">
-        <span class="act-tag tag-act3">Act III: The Why</span>
+        <span class="act-badge badge-act3">Act III: The Why</span>
         <h2>Why Local AI (Phi-4 Mini) with Cloud Failover?</h2>
-        <p class="lead">How we achieved zero recurring software bills, complete privacy, and 99.9% uptime</p>
+        <p class="lead">Zero recurring software bills, complete data privacy, and 99.9% factory uptime.</p>
 
-        <div class="grid-2">
+        <div class="grid-3">
           <div class="card card-accent-emerald">
-            <span class="pill pill-green">Primary Engine</span>
-            <h3 style="margin-top: 0.5rem;">Local Phi-4 Mini via Ollama</h3>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.75rem; font-size: 0.95rem;">
-              <li>💰 <strong>$0 Monthly Cloud Invoices:</strong> Cloud AI charges per word. Phi-4 Mini runs on factory computers for zero subscription cost.</li>
-              <li>🔒 <strong>100% Data Sovereignty:</strong> Factory payroll, cane prices, and supplier debts never leave the mill LAN.</li>
-              <li>⚡ <strong>Offline Continuity:</strong> Works even if the factory internet goes down.</li>
-            </ul>
+            <div style="font-size: 2rem; margin-bottom: 0.4rem;">💰</div>
+            <h3>$0 Monthly Cloud Fees</h3>
+            <p style="font-size: 0.92rem; color: #cbd5e1; margin-top: 0.4rem;">
+              Commercial cloud AI charges per token. Running <strong>Phi-4 Mini locally via Ollama</strong> means unlimited employee questions for zero recurring bills.
+            </p>
+          </div>
+
+          <div class="card card-accent-blue">
+            <div style="font-size: 2rem; margin-bottom: 0.4rem;">🔒</div>
+            <h3>100% Data Privacy</h3>
+            <p style="font-size: 0.92rem; color: #cbd5e1; margin-top: 0.4rem;">
+              Factory payroll, cane pricing, and supplier balances <strong>never leave the factory's local network</strong>. Complete data sovereignty.
+            </p>
           </div>
 
           <div class="card card-accent-purple">
-            <span class="pill pill-purple">Automatic Backup</span>
-            <h3 style="margin-top: 0.5rem;">7-Tier Cloud Failover Chain</h3>
-            <p style="font-size: 0.95rem; margin-top: 0.5rem;">
-              What if the factory computer is rebooting or under heavy load?
-            </p>
-            <div class="code-box" style="margin-top: 0.75rem; font-size: 0.8rem; color: #d8b4fe;">
-1. Local Phi-4 (Primary - $0)
-   ↓ (Fails or busy?)
-2. OpenRouter (Free Cloud)
-   ↓ (Rate limited?)
-3. Grok (Fast Cloud) → OpenAI → Azure → Gemini
-            </div>
-            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.5rem;">
-              Seamless transition in under 50ms — workers never see an error.
+            <div style="font-size: 2rem; margin-bottom: 0.4rem;">⚡</div>
+            <h3>7-Tier Cloud Failover</h3>
+            <p style="font-size: 0.92rem; color: #cbd5e1; margin-top: 0.4rem;">
+              If the factory server ever reboots, reliable cloud models (Grok, OpenAI, Gemini) step in automatically in &lt;50ms so users never see an error.
             </p>
           </div>
         </div>
       </div>
       <aside class="notes">
-        Explain the financial calculation: If 200 workers ask 10 questions a day on commercial cloud AI, you pay thousands of dollars a year.
-        With Phi-4 Mini running on the factory server, that cost drops to zero.
+        Highlight the financial and security calculation: Zero cloud subscription costs + complete data isolation on factory LAN.
       </aside>
     </section>
 
-    <!-- Slide 12: Why Chunking & Query Cleaning? -->
-    <section class="slide" data-title="Why Chunking & Cleaning?">
+    <!-- Slide 10: Zero Hallucination Guarantee (Act III) -->
+    <section class="slide" data-title="Zero Hallucinations">
       <div class="slide-content">
-        <span class="act-tag tag-act3">Act III: The Why</span>
-        <h2>Why Chunking &amp; Query Normalization?</h2>
-        <p class="lead">Bridging the gap between casual human speech and dense 100-page manuals</p>
-
-        <div class="grid-2">
-          <div class="card">
-            <h3>Why 1,500 Chunks with 300 Overlap?</h3>
-            <p style="font-size: 0.95rem; margin-top: 0.5rem;">
-              You cannot feed a 100-page manual into an AI in one shot without slowing it down.
-            </p>
-            <div class="code-box" style="margin-top: 0.75rem; font-size: 0.78rem;">
-Chunk 1: [ Step 1: Open menu. Step 2: Enter registration details... ]
-Chunk 2:        [ ...Enter registration details. Step 3: Verify. ]  <-- 300 OVERLAP
-            </div>
-            <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 0.75rem;">
-              <strong>The 300-char overlap</strong> ensures no multi-step procedure is sliced in half across cards.
-            </p>
-          </div>
-
-          <div class="card card-accent-blue">
-            <h3>Why Query Normalization?</h3>
-            <p style="font-size: 0.95rem; margin-top: 0.5rem;">
-              Workers ask: <em>"Wanted to check pending PR approvals please"</em>.
-            </p>
-            <div class="stepper" style="margin-top: 0.5rem;">
-              <div class="step-item" style="padding: 0.5rem 0.75rem;">
-                <div class="step-num" style="width: 22px; height: 22px; font-size: 0.75rem;">1</div>
-                <div style="font-size: 0.85rem;">Strips conversational fluff (<em>"wanted to"</em>, <em>"please"</em>).</div>
-              </div>
-              <div class="step-item" style="padding: 0.5rem 0.75rem;">
-                <div class="step-num" style="width: 22px; height: 22px; font-size: 0.75rem;">2</div>
-                <div style="font-size: 0.85rem;">Expands acronyms (<em>"PR"</em> $\rightarrow$ <em>"Purchase Requisition"</em>).</div>
-              </div>
-              <div class="step-item" style="padding: 0.5rem 0.75rem;">
-                <div class="step-num" style="width: 22px; height: 22px; font-size: 0.75rem;">3</div>
-                <div style="font-size: 0.85rem;">Canonical query $\rightarrow$ <em>"how to check pending purchase requisition approvals?"</em></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <aside class="notes">
-        Point out that without query cleaning and overlap, even the best AI will fail to find documents because human language is unpredictable.
-      </aside>
-    </section>
-
-    <!-- Slide 13: Why Safety Gates? -->
-    <section class="slide" data-title="Why Safety Gates?">
-      <div class="slide-content">
-        <span class="act-tag tag-act3">Act III: The Why</span>
-        <h2>Why Safety Guardrails? (Zero Hallucinations)</h2>
-        <p class="lead">Why software-enforced gates are mandatory for enterprise factory compliance</p>
+        <span class="act-badge badge-act3">Act III: The Why</span>
+        <h2>Software Guardrails: Zero Hallucinations</h2>
+        <p class="lead">How we guarantee the AI never invents fake factory procedures.</p>
 
         <div class="grid-2">
           <div class="card card-accent-blue">
-            <span class="pill pill-blue">Gate 1</span>
+            <span class="pill pill-blue">Safety Guard 1</span>
             <h3 style="margin-top: 0.5rem;">The Out-of-Scope Gate</h3>
-            <p style="font-size: 0.95rem; margin-top: 0.5rem;">
-              What if someone asks a random question or asks about a feature not yet in the ERP?
+            <p style="font-size: 0.95rem; margin-top: 0.5rem; color: #cbd5e1;">
+              What if someone asks a random question, or asks about an unreleased feature?
             </p>
-            <div class="code-box" style="margin-top: 0.75rem; color: #fca5a5; font-size: 0.85rem;">
+            <div class="code-snippet" style="margin-top: 0.75rem; color: #fca5a5;">
 System: "Data for this topic has not been uploaded yet."
 (The AI is NEVER called — 0% chance of guessing!)
             </div>
           </div>
 
           <div class="card card-accent-emerald">
-            <span class="pill pill-green">Gate 2</span>
+            <span class="pill pill-green">Safety Guard 2</span>
             <h3 style="margin-top: 0.5rem;">Direct-SOP Word-for-Word Pass</h3>
-            <p style="font-size: 0.95rem; margin-top: 0.5rem;">
+            <p style="font-size: 0.95rem; margin-top: 0.5rem; color: #cbd5e1;">
               When the manual has official numbered steps (Step 1, Step 2, Step 3):
             </p>
-            <div class="code-box" style="margin-top: 0.75rem; color: #86efac; font-size: 0.85rem;">
+            <div class="code-snippet" style="margin-top: 0.75rem; color: #86efac;">
 Bypasses AI rewriting completely!
 Copies the exact factory SOP text word-for-word.
             </div>
-            <p style="font-size: 0.85rem; color: #4ade80; margin-top: 0.5rem;">
+            <p style="font-size: 0.88rem; color: #4ade80; margin-top: 0.5rem;">
               Guarantees 100% compliance with factory management protocols.
             </p>
           </div>
         </div>
       </div>
       <aside class="notes">
-        Highlight Gate 2: When you have verified SOPs, you don't need an AI to paraphrase them.
-        Our system intelligently bypasses the AI model and delivers the exact original text.
+        Point out Gate 2: When you have verified SOPs, you don't want an AI rewriting them. You want exact word-for-word fidelity.
       </aside>
     </section>
 
-    <!-- Slide 14: Security & Governance -->
-    <section class="slide" data-title="Security & Governance">
+    <!-- Slide 11: Video & Screen Sync (Act II Feature) -->
+    <section class="slide" data-title="Screen Sync Video">
       <div class="slide-content">
-        <span class="act-tag tag-act4">Act IV: Impact & Governance</span>
-        <h2>Security, Administration &amp; Cost Governance</h2>
-        <div class="grid-3">
-          <div class="card card-accent-blue">
-            <h3>Bank-Grade Security</h3>
-            <ul style="margin-top: 0.5rem; font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.4rem;">
-              <li>Encrypted user logins (JWT tokens).</li>
-              <li>BCrypt salted password hashing.</li>
-              <li>Automatic account lockout after repeated failed passwords.</li>
+        <span class="act-badge badge-act2">Act II: The Solution</span>
+        <h2>Training Videos + Smart Screen Sync</h2>
+        <p class="lead">Bridging the gap between watching a tutorial and taking action on screen.</p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>🎥 On-Demand Video In Chat</h3>
+            <p style="font-size: 0.95rem; color: #cbd5e1; margin-top: 0.5rem;">
+              Workers ask: <em>"Show me the video for salary processing"</em>.
+            </p>
+            <ul style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.75rem; font-size: 0.92rem; color: #cbd5e1;">
+              <li>High-definition video player card appears right inside the chat.</li>
+              <li>Full seeker bar, pause/play, volume, and fullscreen controls.</li>
+              <li>Auto-tagged with module and submodule from the database.</li>
             </ul>
           </div>
 
-          <div class="card card-accent-amber">
-            <h3>Emergency Admin Switch</h3>
-            <ul style="margin-top: 0.5rem; font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.4rem;">
-              <li>One-click master switch to pause AI chat.</li>
-              <li>Upload lock during maintenance.</li>
-              <li>One-click document re-indexing.</li>
+          <div class="card card-accent-purple">
+            <h3>✨ The Magic Sidebar Sync</h3>
+            <p style="font-size: 0.95rem; color: #cbd5e1; margin-top: 0.5rem;">
+              When the employee clicks <strong>Play</strong> on the video:
+            </p>
+            <div class="code-snippet" style="margin-top: 0.75rem; color: #d8b4fe;">
+The live ERP left sidebar automatically opens,
+scrolls to, and illuminates the exact menu button!
+            </div>
+            <p style="font-size: 0.88rem; color: #cbd5e1; margin-top: 0.75rem;">
+              Solves the #1 training gap: <em>"I watched the video, but I couldn't find the button on my screen."</em>
+            </p>
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        Highlight this feature: it connects training directly to the ERP interface in real time.
+      </aside>
+    </section>
+
+    <!-- Slide 13: Admin Control Hub: What Can an Admin Do or Add? (Act IV) -->
+    <section class="slide" data-title="Admin Control Hub">
+      <div class="slide-content">
+        <span class="act-badge badge-act4">Act IV: Administration &amp; Governance</span>
+        <h2>Admin Control Hub: What Can an Admin Do or Add?</h2>
+        <p class="lead">Complete operational autonomy without needing developers or software redeployment.</p>
+
+        <div class="grid-3" style="font-size: 0.88rem; gap: 1rem;">
+          <div class="card card-accent-blue" style="padding: 1.15rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.3rem;">🏢</div>
+            <h3 style="font-size: 1.05rem;">1. Add &amp; Manage Modules</h3>
+            <p style="font-size: 0.84rem; color: #cbd5e1; margin-top: 0.3rem;">
+              Create new factory departments (Distillery, Lab, Co-Gen) with custom icons, submodules, and pre-set suggested questions.
+            </p>
+          </div>
+
+          <div class="card card-accent-emerald" style="padding: 1.15rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.3rem;">📄</div>
+            <h3 style="font-size: 1.05rem;">2. Add Knowledge Documents</h3>
+            <p style="font-size: 0.84rem; color: #cbd5e1; margin-top: 0.3rem;">
+              Upload PDF, DOCX, XLSX, and TXT manuals. Trigger <strong>instant Qdrant re-indexing</strong> with a single click.
+            </p>
+          </div>
+
+          <div class="card card-accent-purple" style="padding: 1.15rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.3rem;">🎥</div>
+            <h3 style="font-size: 1.05rem;">3. Add Training Videos</h3>
+            <p style="font-size: 0.84rem; color: #cbd5e1; margin-top: 0.3rem;">
+              Upload MP4 tutorials and link them directly to modules for in-chat playback and automatic left-sidebar illumination.
+            </p>
+          </div>
+
+          <div class="card card-accent-amber" style="padding: 1.15rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.3rem;">🛑</div>
+            <h3 style="font-size: 1.05rem;">4. Emergency Kill-Switches</h3>
+            <p style="font-size: 0.84rem; color: #cbd5e1; margin-top: 0.3rem;">
+              One-click master toggles to pause AI chat, lock document uploads during audits, or switch primary AI providers live.
+            </p>
+          </div>
+
+          <div class="card card-accent-emerald" style="padding: 1.15rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.3rem;">💵</div>
+            <h3 style="font-size: 1.05rem;">5. Budget &amp; Rate Limits</h3>
+            <p style="font-size: 0.84rem; color: #cbd5e1; margin-top: 0.3rem;">
+              Enforce a hard monthly spending ceiling ($50.00 max), daily request limits, and per-user spam rate limits (5 queries/min).
+            </p>
+          </div>
+
+          <div class="card card-accent-blue" style="padding: 1.15rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.3rem;">👥</div>
+            <h3 style="font-size: 1.05rem;">6. Users &amp; Audit Logs</h3>
+            <p style="font-size: 0.84rem; color: #cbd5e1; margin-top: 0.3rem;">
+              Manage employee accounts, assign Admin/User roles, unlock accounts, and inspect a full tamper-proof security audit log.
+            </p>
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        Highlight the 6 Admin Tabs: Admins can dynamically add new departments, upload manuals, add videos, trigger Qdrant re-indexing, toggle emergency kill-switches, and manage costs without contacting developers.
+      </aside>
+    </section>
+
+    <!-- Slide 14: Enterprise Security & Single Sign-On (SSO) (Act IV) -->
+    <section class="slide" data-title="Security & SSO">
+      <div class="slide-content">
+        <span class="act-badge badge-act4">Act IV: Enterprise Integration</span>
+        <h2>Enterprise Security &amp; Seamless Single Sign-On (SSO)</h2>
+        <p class="lead">Zero-friction authentication: Log in once to Atharva Sugar ERP, and the AI is immediately ready.</p>
+
+        <div class="grid-2" style="gap: 1.25rem;">
+          <div class="card card-accent-blue">
+            <span class="pill pill-blue" style="margin-bottom: 0.5rem;">SSO Architecture</span>
+            <h3 style="font-size: 1.1rem;">🔗 Seamless ERP Token Exchange</h3>
+            <ul style="display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.9rem; color: #cbd5e1; margin-top: 0.5rem;">
+              <li><strong>Single Corporate Login:</strong> Workers never log in twice. The ERP passes the authenticated user session to the AI assistant.</li>
+              <li><strong>Stateless JWT Bearer Auth:</strong> Cryptographically signed tokens (HMAC-SHA256) validate user ID, username, and role.</li>
+              <li><strong>IndexedDB Persistence:</strong> Asynchronous client-side storage (`idbService.js`) maintains sessions across all open browser tabs.</li>
             </ul>
           </div>
 
           <div class="card card-accent-emerald">
-            <h3>Budget &amp; Abuse Caps</h3>
-            <ul style="margin-top: 0.5rem; font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.4rem;">
-              <li>Hard monthly spending ceiling ($50.00 max).</li>
-              <li>Limits spam (max 5 questions/min per user).</li>
-              <li>Full audit trail of every query and response.</li>
+            <span class="pill pill-green" style="margin-bottom: 0.5rem;">Zero Downtime</span>
+            <h3 style="font-size: 1.1rem;">🔄 Silent Background Token Refresh</h3>
+            <ul style="display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.9rem; color: #cbd5e1; margin-top: 0.5rem;">
+              <li><strong>Transparent Refresh:</strong> Axios response interceptor (`api.js`) catches 401 token expirations and silently renews access in the background.</li>
+              <li><strong>Zero Interruption:</strong> Night-shift mill workers never get kicked out to a login screen mid-operation.</li>
+              <li><strong>Automatic Role Mapping:</strong> Corporate permissions map directly to <code>Admin</code> or <code>User</code> roles.</li>
             </ul>
           </div>
         </div>
-      </div>
-      <aside class="notes">
-        Show that IT controls are solid: Admins have complete power to monitor, rate-limit, and shut off features if needed.
-      </aside>
-    </section>
 
-    <!-- Slide 15: Business Impact -->
-    <section class="slide" data-title="Business Impact">
-      <div class="slide-content">
-        <span class="act-tag tag-act4">Act IV: Impact & Governance</span>
-        <h2>Business Impact &amp; Return on Investment (ROI)</h2>
-        <div class="grid-3">
-          <div class="card card-accent-emerald" style="text-align: center; padding: 2rem 1.5rem;">
-            <div style="font-size: 3rem; font-weight: 800; color: var(--emerald);">70%</div>
-            <h3 style="margin-top: 0.5rem; color: #fff;">Faster Onboarding</h3>
-            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.25rem;">New clerks become productive in days instead of weeks.</p>
-          </div>
-
-          <div class="card card-accent-blue" style="text-align: center; padding: 2rem 1.5rem;">
-            <div style="font-size: 3rem; font-weight: 800; color: var(--primary);">$0</div>
-            <h3 style="margin-top: 0.5rem; color: #fff;">Monthly Cloud Fees</h3>
-            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.25rem;">Local SLM engine eliminates recurring SaaS AI subscriptions.</p>
-          </div>
-
-          <div class="card card-accent-purple" style="text-align: center; padding: 2rem 1.5rem;">
-            <div style="font-size: 3rem; font-weight: 800; color: var(--purple);">24 / 7</div>
-            <h3 style="margin-top: 0.5rem; color: #fff;">Always Available</h3>
-            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.25rem;">Night-shift mill operators get immediate guidance when supervisors are away.</p>
+        <div class="card" style="margin-top: 1rem; padding: 0.9rem 1.4rem; background: rgba(56, 189, 248, 0.05); border: 1px dashed rgba(56, 189, 248, 0.35);">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #cbd5e1; flex-wrap: wrap; gap: 0.5rem;">
+            <span>🛡️ <strong>Brute-Force Protection:</strong> IP tracking &amp; 5-attempt account lockout</span>
+            <span>🔒 <strong>Salted BCrypt:</strong> 10-round cryptographic password hashing</span>
+            <span>⏱️ <strong>Session Lifespan:</strong> 120-min access token + 7-day sliding refresh</span>
           </div>
         </div>
       </div>
       <aside class="notes">
-        Quantify the value: Faster onboarding, zero cloud invoices, and 24/7 night shift continuity.
+        Explain SSO: The chatbot integrates seamlessly with Atharva Sugar ERP.
+        Users log in once. Tokens are verified via JWT Bearer authentication and stored in IndexedDB.
+        Axios interceptors silently refresh tokens in the background so operators are never interrupted during their shift.
       </aside>
     </section>
 
-    <!-- Slide 16: Executive Q&A Defense -->
+    <!-- Slide 15: Business Impact (Act IV) -->
+    <section class="slide" data-title="Business Impact">
+      <div class="slide-content">
+        <span class="act-badge badge-act4">Act IV: Impact &amp; Governance</span>
+        <h2>Business Impact &amp; Return on Investment (ROI)</h2>
+        <p class="lead">Measurable operational savings for Atharva Sugar Mill.</p>
+
+        <div class="grid-3">
+          <div class="card card-accent-emerald" style="text-align: center; padding: 2rem 1.5rem;">
+            <div style="font-size: 3.2rem; font-weight: 900; color: var(--emerald); line-height: 1;">70%</div>
+            <h3 style="margin-top: 0.75rem; justify-content: center;">Faster Onboarding</h3>
+            <p style="font-size: 0.88rem; color: #94a3b8; margin-top: 0.35rem;">New clerks become productive in days instead of weeks.</p>
+          </div>
+
+          <div class="card card-accent-blue" style="text-align: center; padding: 2rem 1.5rem;">
+            <div style="font-size: 3.2rem; font-weight: 900; color: var(--primary); line-height: 1;">$0</div>
+            <h3 style="margin-top: 0.75rem; justify-content: center;">Monthly Cloud Fees</h3>
+            <p style="font-size: 0.88rem; color: #94a3b8; margin-top: 0.35rem;">Local SLM engine eliminates costly recurring AI bills.</p>
+          </div>
+
+          <div class="card card-accent-purple" style="text-align: center; padding: 2rem 1.5rem;">
+            <div style="font-size: 3.2rem; font-weight: 900; color: var(--purple); line-height: 1;">24 / 7</div>
+            <h3 style="margin-top: 0.75rem; justify-content: center;">Always Available</h3>
+            <p style="font-size: 0.88rem; color: #94a3b8; margin-top: 0.35rem;">Night-shift mill operators get instant guidance anytime.</p>
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        Highlight the ROI metrics: 70% faster training, zero recurring software bills, and uninterrupted night shift support.
+      </aside>
+    </section>
+
+    <!-- Slide 16: Q&A Defense (Act IV) -->
     <section class="slide" data-title="Q&A Defense">
       <div class="slide-content">
-        <span class="act-tag tag-act4">Act IV: Impact & Governance</span>
+        <span class="act-badge badge-act4">Act IV: Impact &amp; Governance</span>
         <h2>Executive &amp; Evaluator Q&A Defense</h2>
+        <p class="lead">Answers to common operational and architectural questions.</p>
+
         <div class="grid-2">
           <div class="card">
-            <strong style="color: var(--primary);">Q: What if an employee asks something unrelated like cricket or politics?</strong>
-            <p style="font-size: 0.9rem; margin-top: 0.5rem;">
-              <strong>Answer:</strong> The system checks if the question matches factory manuals. Since cricket has 0% match with sugar mill SOPs, it politely replies: <em>"Data for this topic has not been uploaded yet."</em>
+            <strong style="color: var(--primary); font-size: 1rem;">Q: What if an employee asks something unrelated like cricket?</strong>
+            <p style="font-size: 0.9rem; margin-top: 0.4rem; color: #cbd5e1;">
+              <strong>Answer:</strong> The system checks match against factory manuals. Since cricket has 0% match with mill SOPs, it replies: <em>"Data for this topic has not been uploaded yet."</em>
             </p>
           </div>
 
           <div class="card">
-            <strong style="color: var(--primary);">Q: Does our confidential company data get sent to OpenAI or Google?</strong>
-            <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+            <strong style="color: var(--primary); font-size: 1rem;">Q: Does our confidential data get sent to OpenAI or Google?</strong>
+            <p style="font-size: 0.9rem; margin-top: 0.4rem; color: #cbd5e1;">
               <strong>Answer:</strong> No. By default, the system runs 100% locally on factory computers. Data stays strictly inside the mill's private network.
             </p>
           </div>
 
           <div class="card">
-            <strong style="color: var(--primary);">Q: Can we update manuals when factory procedures change?</strong>
-            <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+            <strong style="color: var(--primary); font-size: 1rem;">Q: Can we update manuals when factory procedures change?</strong>
+            <p style="font-size: 0.9rem; margin-top: 0.4rem; color: #cbd5e1;">
               <strong>Answer:</strong> Yes! Administrators upload the new PDF in the Admin Panel, and the assistant updates its knowledge in seconds.
             </p>
           </div>
 
           <div class="card">
-            <strong style="color: var(--primary);">Q: How do you guarantee the AI doesn't modify official numbered steps?</strong>
-            <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+            <strong style="color: var(--primary); font-size: 1rem;">Q: How do you guarantee the AI doesn't modify official numbered steps?</strong>
+            <p style="font-size: 0.9rem; margin-top: 0.4rem; color: #cbd5e1;">
               <strong>Answer:</strong> Our <strong>Direct-SOP Verbatim Pass</strong> copies the exact text directly from the verified manual without letting the AI rephrase it.
             </p>
           </div>
         </div>
       </div>
       <aside class="notes">
-        Review these 4 answers. They cover the most common challenges judges and IT managers raise.
+        Review these 4 answers. They handle the most common tough questions from judges and management.
       </aside>
     </section>
 
-    <!-- Slide 17: Summary & Conclusion -->
-    <section class="slide" data-title="Conclusion">
+    <!-- Slide 17: Conclusion & Live Demo -->
+    <section class="slide" data-title="Conclusion &amp; Demo">
       <div class="slide-content" style="text-align: center; align-items: center;">
-        <span class="act-tag tag-act2">Summary &amp; Conclusion</span>
-        <h1 style="font-size: 3rem;">Thank You!</h1>
-        <p class="lead" style="text-align: center; max-width: 750px; margin-bottom: 2rem;">
+        <span class="act-badge badge-act2">Summary &amp; Live Demo</span>
+        <h1 style="font-size: 3.2rem;">Thank You!</h1>
+        <p class="lead" style="text-align: center; max-width: 750px; margin-bottom: 1.25rem;">
           The Atharva Sugar ERP Smart Assistant bridges factory operational complexity with verified step-by-step guidance, interactive video training, and zero-cost local AI privacy.
         </p>
 
-        <div class="card" style="max-width: 700px; text-align: left; padding: 1.25rem 2rem;">
-          <div style="font-weight: 700; color: #fff; margin-bottom: 0.5rem; font-size: 1.05rem;">The Three Takeaways:</div>
-          <ul style="font-size: 0.95rem; color: #cbd5e1; display: flex; flex-direction: column; gap: 0.4rem;">
-            <li>🔴 <strong>The Problem:</strong> Heavy manual friction, human errors, slow seasonal onboarding.</li>
-            <li>🟢 <strong>The Solution:</strong> An intuitive chat assistant with verified SOP checklists and video screen sync.</li>
-            <li>🔵 <strong>The Why:</strong> RAG for zero hallucinations, local Phi-4 for $0 cost &amp; privacy, dual databases for speed and security.</li>
-          </ul>
+        <div class="grid-2" style="max-width: 820px; width: 100%; gap: 1.25rem; text-align: left; margin-bottom: 1.25rem;">
+          <div class="card card-accent-blue" style="padding: 1.15rem 1.4rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="color: #fff; font-size: 1.05rem;">👑 Admin Demo Account</strong>
+              <span class="pill pill-blue">Role: Admin</span>
+            </div>
+            <div style="margin-top: 0.6rem; font-size: 0.9rem; color: #cbd5e1; display: flex; flex-direction: column; gap: 0.25rem;">
+              <div>• <strong>Username:</strong> <code style="color: #38bdf8; background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px;">admin</code></div>
+              <div>• <strong>Password:</strong> <code style="color: #38bdf8; background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px;">Admin@123</code></div>
+              <div style="margin-top: 0.4rem; color: #94a3b8; font-size: 0.82rem;">
+                Full access: Admin Hub, Manual Upload, Vector Re-indexing, Video Management &amp; AI Provider Controls.
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-accent-emerald" style="padding: 1.15rem 1.4rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="color: #fff; font-size: 1.05rem;">👷 Standard Operator Account</strong>
+              <span class="pill pill-green">Role: User</span>
+            </div>
+            <div style="margin-top: 0.6rem; font-size: 0.9rem; color: #cbd5e1; display: flex; flex-direction: column; gap: 0.25rem;">
+              <div>• <strong>Username:</strong> <code style="color: #34d399; background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px;">user</code></div>
+              <div>• <strong>Password:</strong> <code style="color: #34d399; background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px;">User@123</code></div>
+              <div style="margin-top: 0.4rem; color: #94a3b8; font-size: 0.82rem;">
+                Factory floor access: Natural language guidance, verified SOP checklists, &amp; training videos with screen sync.
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div style="margin-top: 2rem; color: var(--primary); font-weight: 600; font-size: 1.15rem;">
-          Ready for Questions &amp; Live Demonstration
+        <div style="color: var(--primary); font-weight: 700; font-size: 1.15rem;">
+          Ready for Questions &amp; Interactive Live Demonstration
         </div>
       </div>
       <aside class="notes">
-        End with confidence:
-        "Thank you very much. We are now excited to demonstrate the system live or answer any questions you may have!"
+        DEMO INSTRUCTIONS:
+        1. Open the Chat interface at http://localhost:5173/login.
+        2. To demonstrate standard mill staff experience: Log in with username: 'user' and password: 'User@123'.
+           - Ask: "How do I create a purchase requisition in stores?" -> Show verified checklist.
+           - Ask: "Show me the video for cane registration" -> Play video and show the left sidebar automatically illuminating the menu!
+        3. To demonstrate administrative control: Log in with username: 'admin' and password: 'Admin@123'.
+           - Show Admin Hub, document upload, Qdrant vector status, and emergency kill-switch.
       </aside>
     </section>
 
   </main>
 
-  <div id="notes-panel">
+  <!-- Pop-up Speaker Notes Drawer -->
+  <div id="notes-drawer">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-      <strong style="color: var(--primary); font-size: 0.9rem; text-transform: uppercase;">Speaker Notes</strong>
-      <button class="btn-icon" id="closeNotesBtn" style="padding: 0.2rem 0.5rem;">✕</button>
+      <strong style="color: var(--primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">📝 Speaker Notes</strong>
+      <button class="nav-btn" id="closeNotesBtn" style="padding: 0.2rem 0.6rem; font-size: 0.75rem;">✕ Close</button>
     </div>
-    <div id="notes-content" style="font-size: 0.9rem; line-height: 1.6; color: #e2e8f0;"></div>
+    <div id="notes-content" style="font-size: 0.92rem; line-height: 1.6; color: #e2e8f0;"></div>
   </div>
 
+  <!-- Bottom Floating Navigation Dock -->
   <footer>
     <div style="display: flex; align-items: center; gap: 1rem;">
       <button class="nav-btn" id="prevBtn">← Previous</button>
       <button class="nav-btn" id="nextBtn">Next →</button>
-      <span id="slideCounter" style="font-weight: 600; color: #fff;">1 / 17</span>
+      <span id="slideCounter" style="font-weight: 700; color: #fff; font-size: 0.9rem;">1 / 17</span>
     </div>
     <div style="display: flex; align-items: center; gap: 1.5rem;">
-      <span id="currentSlideTitle" style="color: var(--primary); font-weight: 500;">Title Slide</span>
+      <span id="currentSlideTitle" style="color: var(--primary); font-weight: 600;">Title Slide</span>
       <span>Atharva Sugar ERP • Problem, Solution &amp; The Why</span>
     </div>
   </footer>
@@ -992,7 +1273,7 @@ Copies the exact factory SOP text word-for-word.
     const progressBar = document.getElementById('progressBar');
     const slideCounter = document.getElementById('slideCounter');
     const currentSlideTitle = document.getElementById('currentSlideTitle');
-    const notesPanel = document.getElementById('notes-panel');
+    const notesDrawer = document.getElementById('notes-drawer');
     const notesContent = document.getElementById('notes-content');
     const toggleNotesBtn = document.getElementById('toggleNotesBtn');
     const closeNotesBtn = document.getElementById('closeNotesBtn');
@@ -1067,15 +1348,15 @@ Copies the exact factory SOP text word-for-word.
           break;
         case 'n':
         case 'N':
-          notesPanel.classList.toggle('open');
+          notesDrawer.classList.toggle('open');
           break;
       }
     });
 
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
-    toggleNotesBtn.addEventListener('click', () => notesPanel.classList.toggle('open'));
-    closeNotesBtn.addEventListener('click', () => notesPanel.classList.remove('open'));
+    toggleNotesBtn.addEventListener('click', () => notesDrawer.classList.toggle('open'));
+    closeNotesBtn.addEventListener('click', () => notesDrawer.classList.remove('open'));
 
     updateSlide(0);
   </script>
