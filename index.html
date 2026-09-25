@@ -173,10 +173,9 @@
     .slide {
       position: absolute;
       inset: 0;
-      padding: 5.5rem 3.5rem 4.5rem 3.5rem;
+      padding: 5rem 3rem 4.5rem 3rem;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       opacity: 0;
       visibility: hidden;
@@ -184,6 +183,23 @@
       transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
                   transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                   visibility 0.4s;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .slide::-webkit-scrollbar {
+      width: 6px;
+    }
+    .slide::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .slide::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 4px;
+    }
+    body.light-mode .slide::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.15);
     }
 
     .slide.active {
@@ -195,11 +211,11 @@
     .slide-content {
       width: 100%;
       max-width: 1180px;
-      height: 100%;
-      max-height: 80vh;
+      margin: auto 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: 0.75rem 0;
     }
 
     /* Section Act Badges */
@@ -222,64 +238,65 @@
     .badge-act3 { background: rgba(56, 189, 248, 0.12); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
     .badge-act4 { background: rgba(168, 85, 247, 0.12); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
 
-    /* Clean, High-Impact Typography */
+    /* Clean, High-Impact Fluid Typography */
     h1 {
       font-family: var(--font-heading);
-      font-size: 3.5rem;
+      font-size: clamp(2rem, 4.8vw, 3.5rem);
       font-weight: 900;
-      line-height: 1.12;
+      line-height: 1.14;
       letter-spacing: -0.03em;
       background: linear-gradient(135deg, #ffffff 45%, var(--primary) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.75rem;
     }
 
     h2 {
       font-family: var(--font-heading);
-      font-size: 2.2rem;
+      font-size: clamp(1.35rem, 3.2vw, 2.2rem);
       font-weight: 800;
       letter-spacing: -0.02em;
       color: #ffffff;
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 0.6rem;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     h2::before {
       content: "";
       display: inline-block;
       width: 6px;
-      height: 1.8rem;
+      height: 1.5em;
       background: linear-gradient(180deg, var(--primary), #2563eb);
       border-radius: 4px;
       box-shadow: 0 0 12px var(--primary);
+      flex-shrink: 0;
     }
 
     h3 {
       font-family: var(--font-heading);
-      font-size: 1.25rem;
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
       font-weight: 700;
       color: #fff;
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
 
     .lead {
-      font-size: 1.22rem;
+      font-size: clamp(0.92rem, 1.6vw, 1.22rem);
       font-weight: 400;
       color: var(--text-muted);
-      line-height: 1.5;
-      margin-bottom: 1.75rem;
+      line-height: 1.45;
+      margin-bottom: clamp(1rem, 2vw, 1.65rem);
     }
 
     /* Grids & Cards */
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; width: 100%; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; width: 100%; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; width: 100%; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; width: 100%; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.15rem; width: 100%; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.95rem; width: 100%; }
 
     .card {
       background: var(--card-bg);
@@ -641,6 +658,151 @@
     body.light-mode .badge-act2 { background: #d1fae5; color: #059669; border-color: #a7f3d0; }
     body.light-mode .badge-act3 { background: #e0f2fe; color: #0284c7; border-color: #bae6fd; }
     body.light-mode .badge-act4 { background: #f3e8ff; color: #7c3aed; border-color: #e9d5ff; }
+
+    /* ══════════════════════════════════════════════════════════════════
+       RESPONSIVE DESIGN BREAKPOINTS
+       ══════════════════════════════════════════════════════════════════ */
+    /* Large Tablets & Standard Projectors (<= 1080px) */
+    @media (max-width: 1080px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+      }
+      .slide {
+        padding: 4.8rem 2rem 3.8rem 2rem;
+      }
+      .slide-content {
+        max-width: 100%;
+      }
+    }
+
+    /* Medium Tablets & Low-Res Projectors (<= 860px) */
+    @media (max-width: 860px) {
+      header {
+        padding: 0 1.25rem;
+      }
+      .brand span:not(.brand-badge) {
+        font-size: 0.95rem;
+      }
+      .header-hints {
+        display: none !important;
+      }
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+      }
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      .footer-subtext {
+        display: none !important;
+      }
+      #notes-drawer {
+        width: calc(100vw - 2.5rem);
+        right: 1.25rem;
+        left: 1.25rem;
+      }
+    }
+
+    /* Mobile Phones & Compact Screens (<= 640px) */
+    @media (max-width: 640px) {
+      header {
+        height: 52px;
+        padding: 0 0.85rem;
+      }
+      .brand {
+        gap: 0.45rem;
+      }
+      .brand span:not(.brand-badge) {
+        max-width: 135px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.82rem;
+      }
+      .btn-theme, .btn-notes {
+        padding: 0.3rem 0.55rem;
+        font-size: 0.74rem;
+      }
+      .slide {
+        padding: 4.2rem 1rem 3.6rem 1rem;
+        justify-content: flex-start;
+      }
+      .slide-content {
+        margin: 0;
+        padding: 0.5rem 0 1.5rem 0;
+      }
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr !important;
+        gap: 0.85rem !important;
+      }
+      .card {
+        padding: 1.1rem;
+        border-radius: 12px;
+      }
+      .analogy-banner {
+        padding: 0.85rem 1rem;
+        font-size: 0.92rem;
+      }
+      .step-item {
+        padding: 0.75rem 0.9rem;
+      }
+      .step-circle {
+        width: 26px;
+        height: 26px;
+        font-size: 0.8rem;
+      }
+      footer {
+        padding: 0 0.85rem;
+        height: 44px;
+      }
+      .progress-track {
+        bottom: 44px;
+      }
+      #currentSlideTitle {
+        max-width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.78rem;
+      }
+      .nav-btn {
+        padding: 0.28rem 0.65rem;
+        font-size: 0.75rem;
+      }
+      #notes-drawer {
+        width: calc(100vw - 1.5rem);
+        right: 0.75rem;
+        left: 0.75rem;
+        bottom: 50px;
+        max-height: 50vh;
+        padding: 1rem;
+      }
+    }
+
+    /* Short Viewports & Meeting Room Displays (<= 720px height) */
+    @media (max-height: 720px) {
+      .slide {
+        padding-top: 4rem;
+        padding-bottom: 3.5rem;
+      }
+      .slide-content {
+        margin: 0;
+      }
+      .card {
+        padding: 0.85rem 1.1rem;
+      }
+      .lead {
+        margin-bottom: 0.75rem;
+      }
+      .act-badge {
+        margin-bottom: 0.4rem;
+        padding: 0.2rem 0.6rem;
+      }
+      h2 {
+        margin-bottom: 0.35rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -654,10 +816,12 @@
       <span>Atharva Sugar ERP Smart Assistant</span>
     </div>
     <div class="header-actions">
-      <span><kbd class="key-pill">←</kbd> <kbd class="key-pill">→</kbd> Navigate</span>
-      <span><kbd class="key-pill">F</kbd> Fullscreen</span>
-      <span><kbd class="key-pill">N</kbd> Notes</span>
-      <span><kbd class="key-pill">L</kbd> Light/Dark</span>
+      <div class="header-hints" style="display: flex; align-items: center; gap: 0.85rem;">
+        <span><kbd class="key-pill">←</kbd> <kbd class="key-pill">→</kbd> Navigate</span>
+        <span><kbd class="key-pill">F</kbd> Fullscreen</span>
+        <span><kbd class="key-pill">N</kbd> Notes</span>
+        <span><kbd class="key-pill">L</kbd> Light/Dark</span>
+      </div>
       <button class="btn-theme" id="toggleThemeBtn" title="Toggle Light/Dark Projector Mode (Shortcut: L)">☀️ Light Mode</button>
       <button class="btn-notes" id="toggleNotesBtn">📝 Speaker Notes</button>
     </div>
@@ -1604,7 +1768,7 @@ scrolls to, and illuminates the exact menu button!
     </div>
     <div style="display: flex; align-items: center; gap: 1.5rem;">
       <span id="currentSlideTitle" style="color: var(--primary); font-weight: 600;">Title Slide</span>
-      <span>Atharva Sugar ERP • Problem, Solution &amp; The Why</span>
+      <span class="footer-subtext">Atharva Sugar ERP • Problem, Solution &amp; The Why</span>
     </div>
   </footer>
 
@@ -1718,6 +1882,36 @@ scrolls to, and illuminates the exact menu button!
     closeNotesBtn.addEventListener('click', () => notesDrawer.classList.remove('open'));
     if (toggleThemeBtn) {
       toggleThemeBtn.addEventListener('click', () => setTheme(!isLightMode));
+    }
+
+    // Touch swipe navigation for tablets and mobile devices
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+      // Trigger horizontal slide transition if swipe is primarily horizontal and exceeds 50px
+      if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+        if (diffX < 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
     }
 
     try {
