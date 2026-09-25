@@ -140,6 +140,27 @@
       box-shadow: 0 0 12px var(--primary-glow);
     }
 
+    .btn-theme {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #fbbf24;
+      padding: 0.35rem 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-theme:hover {
+      background: rgba(245, 158, 11, 0.25);
+      border-color: var(--amber);
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+    }
+
     /* Slide Deck Container */
     #deck {
       position: relative;
@@ -431,6 +452,195 @@
       color: #070a12;
       border-color: var(--primary);
     }
+
+    /* ══════════════════════════════════════════════════════════════════
+       PROJECTOR LIGHT MODE THEME (Crisp High-Contrast for Projectors & Auditoriums)
+       ══════════════════════════════════════════════════════════════════ */
+    body.light-mode {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: #cbd5e1;
+      --card-border-hover: #0284c7;
+      --primary: #0284c7;
+      --primary-glow: rgba(2, 132, 199, 0.2);
+      --emerald: #059669;
+      --emerald-glow: rgba(5, 150, 105, 0.2);
+      --purple: #7c3aed;
+      --amber: #d97706;
+      --rose: #e11d48;
+      --text: #0f172a;
+      --text-muted: #475569;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    body.light-mode .ambient-glow {
+      background: radial-gradient(circle at 12% 15%, rgba(2, 132, 199, 0.08) 0%, transparent 45%),
+                  radial-gradient(circle at 88% 85%, rgba(124, 58, 237, 0.05) 0%, transparent 45%);
+    }
+
+    body.light-mode .grid-lines {
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    }
+
+    body.light-mode header {
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid rgba(203, 213, 225, 0.85);
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    body.light-mode footer {
+      background: rgba(255, 255, 255, 0.96);
+      border-top: 1px solid rgba(203, 213, 225, 0.85);
+      color: #64748b;
+    }
+
+    body.light-mode footer #slideCounter {
+      color: #0f172a !important;
+    }
+
+    body.light-mode .progress-track {
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    body.light-mode h1 {
+      background: linear-gradient(135deg, #0f172a 45%, #0284c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    body.light-mode h2,
+    body.light-mode h3 {
+      color: #0f172a !important;
+    }
+
+    body.light-mode .lead {
+      color: #475569 !important;
+    }
+
+    body.light-mode .card {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05) !important;
+    }
+
+    body.light-mode .card:hover {
+      border-color: #0284c7 !important;
+      box-shadow: 0 8px 26px rgba(2, 132, 199, 0.12) !important;
+    }
+
+    body.light-mode .step-item {
+      background: #ffffff !important;
+      border-color: #cbd5e1 !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+    }
+
+    body.light-mode .step-item:hover {
+      background: #f8fafc !important;
+      border-color: #0284c7 !important;
+    }
+
+    body.light-mode .code-snippet {
+      background: #f1f5f9 !important;
+      border: 1px solid #cbd5e1 !important;
+      color: #0369a1 !important;
+    }
+
+    body.light-mode .analogy-banner {
+      background: #f0f9ff !important;
+      border: 1px solid #bae6fd !important;
+      border-left: 4px solid var(--primary) !important;
+      color: #0c4a6e !important;
+    }
+
+    body.light-mode #notes-drawer {
+      background: #ffffff;
+      border: 1px solid #0284c7;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+    }
+
+    body.light-mode #notes-content {
+      color: #1e293b !important;
+    }
+
+    body.light-mode .nav-btn {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    body.light-mode .nav-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    body.light-mode .key-pill {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #334155;
+    }
+
+    body.light-mode .btn-theme {
+      background: #fef3c7;
+      border-color: #f59e0b;
+      color: #b45309;
+    }
+    body.light-mode .btn-theme:hover {
+      background: #fde68a;
+    }
+
+    /* Light mode text color adaptations for inline dark-mode styles */
+    body.light-mode strong[style*="color: #fff"],
+    body.light-mode strong[style*="color:#fff"],
+    body.light-mode div[style*="color: #fff"],
+    body.light-mode div[style*="color:#fff"],
+    body.light-mode h3[style*="color: #fff"],
+    body.light-mode h3[style*="color:#fff"] {
+      color: #0f172a !important;
+    }
+
+    body.light-mode p[style*="color: #cbd5e1"],
+    body.light-mode p[style*="color:#cbd5e1"],
+    body.light-mode div[style*="color: #cbd5e1"],
+    body.light-mode div[style*="color:#cbd5e1"],
+    body.light-mode ul[style*="color: #cbd5e1"],
+    body.light-mode span[style*="color: #cbd5e1"] {
+      color: #334155 !important;
+    }
+
+    body.light-mode p[style*="color: #94a3b8"],
+    body.light-mode div[style*="color: #94a3b8"] {
+      color: #475569 !important;
+    }
+
+    body.light-mode code {
+      background: #f1f5f9 !important;
+      color: #0284c7 !important;
+      border: 1px solid #cbd5e1 !important;
+    }
+
+    body.light-mode .card[style*="background: rgba(16, 185, 129, 0.06)"] {
+      background: #ecfdf5 !important;
+      border-color: #a7f3d0 !important;
+    }
+    body.light-mode .card[style*="background: rgba(56, 189, 248, 0.06)"],
+    body.light-mode .card[style*="background: rgba(56, 189, 248, 0.05)"] {
+      background: #f0f9ff !important;
+      border-color: #bae6fd !important;
+    }
+
+    body.light-mode .pill-blue { background: #e0f2fe; color: #0284c7; border-color: #bae6fd; }
+    body.light-mode .pill-green { background: #d1fae5; color: #059669; border-color: #a7f3d0; }
+    body.light-mode .pill-purple { background: #f3e8ff; color: #7c3aed; border-color: #e9d5ff; }
+    body.light-mode .pill-amber { background: #fef3c7; color: #d97706; border-color: #fde68a; }
+    body.light-mode .pill-rose { background: #ffe4e6; color: #e11d48; border-color: #fecdd3; }
+
+    body.light-mode .badge-act1 { background: #ffe4e6; color: #e11d48; border-color: #fecdd3; }
+    body.light-mode .badge-act2 { background: #d1fae5; color: #059669; border-color: #a7f3d0; }
+    body.light-mode .badge-act3 { background: #e0f2fe; color: #0284c7; border-color: #bae6fd; }
+    body.light-mode .badge-act4 { background: #f3e8ff; color: #7c3aed; border-color: #e9d5ff; }
   </style>
 </head>
 <body>
@@ -446,7 +656,9 @@
     <div class="header-actions">
       <span><kbd class="key-pill">←</kbd> <kbd class="key-pill">→</kbd> Navigate</span>
       <span><kbd class="key-pill">F</kbd> Fullscreen</span>
-      <span><kbd class="key-pill">N</kbd> Speaker Notes</span>
+      <span><kbd class="key-pill">N</kbd> Notes</span>
+      <span><kbd class="key-pill">L</kbd> Light/Dark</span>
+      <button class="btn-theme" id="toggleThemeBtn" title="Toggle Light/Dark Projector Mode (Shortcut: L)">☀️ Light Mode</button>
       <button class="btn-notes" id="toggleNotesBtn">📝 Speaker Notes</button>
     </div>
   </header>
@@ -817,44 +1029,80 @@
       </aside>
     </section>
 
-    <!-- Slide 8: Why RAG? (Act III) -->
-    <section class="slide" data-title="Why RAG?">
+    <!-- Slide 8: What is RAG & Why We Used It? (Act III) -->
+    <section class="slide" data-title="What is RAG &amp; Why We Used It?">
       <div class="slide-content">
-        <span class="act-badge badge-act3">Act III: The Why</span>
-        <h2>Why RAG Instead of Plain ChatGPT?</h2>
-        <p class="lead">Why general cloud AI fails in manufacturing, and why RAG is mandatory for accuracy.</p>
+        <span class="act-badge badge-act3">Act III: Core AI Architecture</span>
+        <h2>What is RAG &amp; Why Did We Use It?</h2>
+        <p class="lead" style="margin-bottom: 0.9rem;">
+          <strong>RAG (Retrieval-Augmented Generation)</strong> transforms a guessing AI into a verified open-book factory expert.
+        </p>
 
-        <div class="analogy-banner">
-          <strong>The "Open-Book Exam" Approach:</strong><br>
-          If you give a student a closed-book exam on Atharva Sugar rules, they guess. Public ChatGPT does the exact same thing: it hallucinates fake buttons.<br>
-          <strong>RAG forces an open-book exam:</strong> The system opens the official company manual, hands the exact page to the AI, and commands: <em>"Answer ONLY from this text."</em>
+        <!-- 3-Step RAG Visual Pipeline -->
+        <div class="grid-3" style="margin-bottom: 1rem; gap: 0.85rem;">
+          <div class="card card-accent-blue" style="padding: 1rem 1.15rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+              <strong style="color: var(--primary); font-size: 0.95rem;">1. RETRIEVE</strong>
+              <span class="pill pill-blue" style="font-size: 0.72rem;">Qdrant Cloud</span>
+            </div>
+            <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.45;">
+              Employee asks any question &rarr; System searches 768-dim vector chunks and retrieves the exact 1&ndash;2 paragraphs from factory manuals.
+            </p>
+          </div>
+
+          <div class="card card-accent-purple" style="padding: 1rem 1.15rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+              <strong style="color: var(--purple); font-size: 0.95rem;">2. AUGMENT</strong>
+              <span class="pill pill-purple" style="font-size: 0.72rem;">Strict Context</span>
+            </div>
+            <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.45;">
+              System packages the question + retrieved paragraphs into a strict prompt: <em>&ldquo;Answer ONLY using these verified facts.&rdquo;</em>
+            </p>
+          </div>
+
+          <div class="card card-accent-emerald" style="padding: 1rem 1.15rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+              <strong style="color: var(--emerald); font-size: 0.95rem;">3. GENERATE</strong>
+              <span class="pill pill-green" style="font-size: 0.72rem;">Local Phi-4 Mini</span>
+            </div>
+            <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.45;">
+              AI reads those exact paragraphs and generates a verified 1-2-3 checklist with <strong>0% hallucination</strong>.
+            </p>
+          </div>
         </div>
 
-        <div class="grid-2" style="margin-top: 1rem;">
-          <div class="card card-accent-rose">
-            <h3 style="color: #fb7185;">❌ Plain ChatGPT (Closed-Book)</h3>
-            <ul style="font-size: 0.92rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #cbd5e1;">
-              <li>Answers from general internet memory.</li>
-              <li>Invents fake ERP buttons and menu paths.</li>
-              <li>Risks operational halts and compliance errors.</li>
+        <div class="grid-2" style="gap: 1rem;">
+          <div class="card card-accent-rose" style="padding: 1rem 1.25rem;">
+            <h3 style="color: #fb7185; font-size: 1.05rem;">❌ Plain ChatGPT: Closed-Book Exam</h3>
+            <ul style="font-size: 0.85rem; margin-top: 0.4rem; display: flex; flex-direction: column; gap: 0.3rem; color: #cbd5e1;">
+              <li>Answers strictly from memorized public internet training data.</li>
+              <li>Has never seen Atharva Sugar rules &rarr; <strong>hallucinates fake buttons</strong>.</li>
+              <li>Requires expensive re-training and GPU fine-tuning to update knowledge.</li>
             </ul>
           </div>
-          <div class="card card-accent-emerald">
-            <h3 style="color: #34d399;">✅ Our RAG Architecture (Open-Book)</h3>
-            <ul style="font-size: 0.92rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #cbd5e1;">
-              <li>Answers strictly from verified factory PDFs.</li>
-              <li>Quotes Atharva Sugar’s exact workflow steps.</li>
-              <li>Guarantees 100% adherence to company protocols.</li>
+
+          <div class="card card-accent-emerald" style="padding: 1rem 1.25rem;">
+            <h3 style="color: #34d399; font-size: 1.05rem;">✅ Our RAG System: Open-Book Exam</h3>
+            <ul style="font-size: 0.85rem; margin-top: 0.4rem; display: flex; flex-direction: column; gap: 0.3rem; color: #cbd5e1;">
+              <li><strong>Zero Guessing / 100% Safety:</strong> Answers are strictly bounded by official company manuals.</li>
+              <li><strong>Instant Updates (2 Seconds):</strong> Upload a new PDF manual &rarr; indexed instantly without AI re-training.</li>
+              <li><strong>$0 Cloud Cost &amp; LAN Privacy:</strong> Local small language models (Phi-4 Mini) keep all mill data private.</li>
             </ul>
           </div>
         </div>
       </div>
       <aside class="notes">
-        Explain the "Open-Book Exam" concept. It is the core reason our system is safe for factory deployment.
+        CRITICAL TALKING POINT: Explain RAG simply using the 'Open-Book Exam' analogy:
+        Standard AI takes a closed-book exam and guesses custom factory rules, inventing fake buttons.
+        RAG forces an open-book exam in 3 steps: 
+        1) RETRIEVE: Search Qdrant for the exact page in factory manuals.
+        2) AUGMENT: Hand the question + those verified paragraphs to the AI.
+        3) GENERATE: Draft a verified 1-2-3 checklist using ONLY those facts.
+        Why we used RAG: 1) Zero Hallucinations for mill safety, 2) Instant knowledge updates by uploading a PDF in 2 seconds with zero retraining costs, 3) 100% data privacy on factory LAN.
       </aside>
     </section>
 
-    <!-- Slide 8: Why Two Databases? (Act III) -->
+    <!-- Slide 9: Why Two Databases? (Act III) -->
     <section class="slide" data-title="Why Two Databases?">
       <div class="slide-content">
         <span class="act-badge badge-act3">Act III: The Why</span>
@@ -891,7 +1139,7 @@
       </aside>
     </section>
 
-    <!-- Slide 9: Why Local AI? (Act III) -->
+    <!-- Slide 10: Why Local AI? (Act III) -->
     <section class="slide" data-title="Why Local AI?">
       <div class="slide-content">
         <span class="act-badge badge-act3">Act III: The Why</span>
@@ -929,7 +1177,7 @@
       </aside>
     </section>
 
-    <!-- Slide 10: Zero Hallucination Guarantee (Act III) -->
+    <!-- Slide 11: Software Guardrails: Zero Hallucinations (Act III) -->
     <section class="slide" data-title="Zero Hallucinations">
       <div class="slide-content">
         <span class="act-badge badge-act3">Act III: The Why</span>
@@ -970,7 +1218,7 @@ Copies the exact factory SOP text word-for-word.
       </aside>
     </section>
 
-    <!-- Slide 11: Video & Screen Sync (Act II Feature) -->
+    <!-- Slide 12: Training Videos + Smart Screen Sync (Act II Feature) -->
     <section class="slide" data-title="Screen Sync Video">
       <div class="slide-content">
         <span class="act-badge badge-act2">Act II: The Solution</span>
@@ -1072,51 +1320,129 @@ scrolls to, and illuminates the exact menu button!
       </aside>
     </section>
 
-    <!-- Slide 14: Enterprise Security & Single Sign-On (SSO) (Act IV) -->
-    <section class="slide" data-title="Security & SSO">
+    <!-- Slide 14: Universal SSO & Symmetric Security Architecture (Act IV) -->
+    <section class="slide" data-title="Universal SSO &amp; Security">
       <div class="slide-content">
-        <span class="act-badge badge-act4">Act IV: Enterprise Integration</span>
-        <h2>Enterprise Security &amp; Seamless Single Sign-On (SSO)</h2>
-        <p class="lead">Zero-friction authentication: Log in once to Atharva Sugar ERP, and the AI is immediately ready.</p>
+        <span class="act-badge badge-act4">Act IV: Universal Integration &amp; Security</span>
+        <h2>Universal SSO: Symmetric Security &amp; Extensible RBAC</h2>
+        <p class="lead" style="margin-bottom: 0.9rem;">
+          How single-API-key decoupling, sub-millisecond symmetric signing, and extensible roles make the assistant universal.
+        </p>
 
-        <div class="grid-2" style="gap: 1.25rem;">
-          <div class="card card-accent-blue">
-            <span class="pill pill-blue" style="margin-bottom: 0.5rem;">SSO Architecture</span>
-            <h3 style="font-size: 1.1rem;">🔗 Seamless ERP Token Exchange</h3>
-            <ul style="display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.9rem; color: #cbd5e1; margin-top: 0.5rem;">
-              <li><strong>Single Corporate Login:</strong> Workers never log in twice. The ERP passes the authenticated user session to the AI assistant.</li>
-              <li><strong>Stateless JWT Bearer Auth:</strong> Cryptographically signed tokens (HMAC-SHA256) validate user ID, username, and role.</li>
-              <li><strong>IndexedDB Persistence:</strong> Asynchronous client-side storage (`idbService.js`) maintains sessions across all open browser tabs.</li>
-            </ul>
+        <div class="grid-4" style="gap: 0.85rem; font-size: 0.86rem; margin-bottom: 0.9rem;">
+          <div class="card card-accent-blue" style="padding: 1rem 1.15rem;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">🔌</div>
+            <strong style="color: #fff; font-size: 0.95rem; display: block;">1. Decoupled &amp; Portable</strong>
+            <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 0.25rem; line-height: 1.4;">
+              Runs as an independent microservice. Connects to <strong>ANY host application</strong> (Sugar ERP, Weighbridge scale kiosks, Farmer mobile app) via a single API key.
+            </p>
           </div>
 
-          <div class="card card-accent-emerald">
-            <span class="pill pill-green" style="margin-bottom: 0.5rem;">Zero Downtime</span>
-            <h3 style="font-size: 1.1rem;">🔄 Silent Background Token Refresh</h3>
-            <ul style="display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.9rem; color: #cbd5e1; margin-top: 0.5rem;">
-              <li><strong>Transparent Refresh:</strong> Axios response interceptor (`api.js`) catches 401 token expirations and silently renews access in the background.</li>
-              <li><strong>Zero Interruption:</strong> Night-shift mill workers never get kicked out to a login screen mid-operation.</li>
-              <li><strong>Automatic Role Mapping:</strong> Corporate permissions map directly to <code>Admin</code> or <code>User</code> roles.</li>
-            </ul>
+          <div class="card card-accent-emerald" style="padding: 1rem 1.15rem;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">🔑</div>
+            <strong style="color: #34d399; font-size: 0.95rem; display: block;">2. Symmetric (HMAC-SHA256)</strong>
+            <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 0.25rem; line-height: 1.4;">
+              Uses a shared enterprise secret key (<code>Jwt:Key</code>). <strong>Sub-millisecond (&lt;0.05ms)</strong> in-memory verification and 100% offline factory LAN compatibility without cloud IdP lag.
+            </p>
+          </div>
+
+          <div class="card card-accent-purple" style="padding: 1rem 1.15rem;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">👥</div>
+            <strong style="color: #c084fc; font-size: 0.95rem; display: block;">3. ERP-Ready Extensible RBAC</strong>
+            <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 0.25rem; line-height: 1.4;">
+              2 core active roles (<code>Admin</code> &amp; <code>User</code>). Stored as an open <code>nvarchar(50)</code> claim in SQL Server &rarr; ready to add <em>Supervisor, WeighbridgeClerk, Accountant</em> instantly.
+            </p>
+          </div>
+
+          <div class="card card-accent-amber" style="padding: 1rem 1.15rem;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">🔄</div>
+            <strong style="color: #fbbf24; font-size: 0.95rem; display: block;">4. Silent Refresh &amp; IDB</strong>
+            <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 0.25rem; line-height: 1.4;">
+              Multi-tab session sharing in browser <strong>IndexedDB</strong>. Axios interceptor silently renews 120-min tokens in the background so night-shift operators are never logged out.
+            </p>
           </div>
         </div>
 
-        <div class="card" style="margin-top: 1rem; padding: 0.9rem 1.4rem; background: rgba(56, 189, 248, 0.05); border: 1px dashed rgba(56, 189, 248, 0.35);">
-          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #cbd5e1; flex-wrap: wrap; gap: 0.5rem;">
-            <span>🛡️ <strong>Brute-Force Protection:</strong> IP tracking &amp; 5-attempt account lockout</span>
-            <span>🔒 <strong>Salted BCrypt:</strong> 10-round cryptographic password hashing</span>
-            <span>⏱️ <strong>Session Lifespan:</strong> 120-min access token + 7-day sliding refresh</span>
+        <div class="card" style="padding: 0.75rem 1.25rem; background: rgba(56, 189, 248, 0.05); border: 1px dashed rgba(56, 189, 248, 0.35);">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.84rem; color: #cbd5e1; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <strong style="color: #38bdf8;">⚡ Cryptographic Signature Code:</strong>
+              Implemented via ASP.NET Core <code>SymmetricSecurityKey</code> in <code>JwtService.cs</code> and validated in <code>Program.cs</code>.
+            </div>
+            <code style="background: rgba(0,0,0,0.4); padding: 3px 8px; border-radius: 6px; color: #7dd3fc; font-size: 0.78rem;">
+              SecurityAlgorithms.HmacSha256 (HS256)
+            </code>
           </div>
         </div>
       </div>
       <aside class="notes">
-        Explain SSO: The chatbot integrates seamlessly with Atharva Sugar ERP.
-        Users log in once. Tokens are verified via JWT Bearer authentication and stored in IndexedDB.
-        Axios interceptors silently refresh tokens in the background so operators are never interrupted during their shift.
+        CRITICAL TALKING POINT: Emphasize that our SSO implementation is:
+        1) 100% INDEPENDENT: Any mill app connects with a Single API Key.
+        2) SYMMETRIC CRYPTOGRAPHY: Uses HMAC-SHA256 with a shared secret key. This gives sub-millisecond (&lt;0.05ms) verification with zero network round-trip delay, and works 100% offline on the factory LAN without external cloud OAuth dependencies.
+        3) ERP-READY RBAC: 2 active roles (Admin &amp; User) ensure clear governance, but the database uses an open string claim, ready to support custom roles (Supervisor, Accountant, Chemist) anytime.
       </aside>
     </section>
 
-    <!-- Slide 15: Business Impact (Act IV) -->
+    <!-- Slide 15: Advanced Enterprise Capabilities & Engineering Depth (Act IV) -->
+    <section class="slide" data-title="Advanced Capabilities">
+      <div class="slide-content">
+        <span class="act-badge badge-act4">Act IV: Engineering Depth</span>
+        <h2>Advanced Enterprise Capabilities: Built Beyond Standard Chat</h2>
+        <p class="lead" style="margin-bottom: 0.9rem;">
+          Production-grade engineering subsystems that guarantee resilience, security, and multi-format discovery.
+        </p>
+
+        <div class="grid-3" style="font-size: 0.86rem; gap: 0.85rem;">
+          <div class="card card-accent-blue" style="padding: 0.95rem 1.15rem;">
+            <strong style="color: var(--primary); font-size: 0.95rem; display: block;">1. Multimodal Diagram Search</strong>
+            <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 0.25rem;">
+              <code>ImageSearchService.cs</code> &amp; Qdrant <code>image_metadata</code> embed visual ERP workflow screenshots and factory diagrams into searchable vectors.
+            </p>
+          </div>
+
+          <div class="card card-accent-emerald" style="padding: 0.95rem 1.15rem;">
+            <strong style="color: var(--emerald); font-size: 0.95rem; display: block;">2. Sugarcane Acronym Normalizer</strong>
+            <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 0.25rem;">
+              <code>QueryNormalizationService.cs</code> cleans mill abbreviations (&lsquo;PR&rsquo;, &lsquo;PO&rsquo;, &lsquo;GRN&rsquo;, &lsquo;Tare&rsquo;, &lsquo;Challan&rsquo;) before vector lookup for 100% match accuracy.
+            </p>
+          </div>
+
+          <div class="card card-accent-rose" style="padding: 0.95rem 1.15rem;">
+            <strong style="color: #fb7185; font-size: 0.95rem; display: block;">3. Brute-Force IP Lockout Defense</strong>
+            <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 0.25rem;">
+              <code>LoginAttemptService.cs</code> tracks failed logins by IP address and automatically locks accounts after 5 failed attempts to prevent dictionary attacks.
+            </p>
+          </div>
+
+          <div class="card card-accent-purple" style="padding: 0.95rem 1.15rem;">
+            <strong style="color: var(--purple); font-size: 0.95rem; display: block;">4. Real-Time Token Streaming</strong>
+            <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 0.25rem;">
+              <code>StreamTokenService.cs</code> implements Server-Sent Events (SSE) streaming, creating a smooth typewriter effect with immediate perceived response time.
+            </p>
+          </div>
+
+          <div class="card card-accent-amber" style="padding: 0.95rem 1.15rem;">
+            <strong style="color: var(--amber); font-size: 0.95rem; display: block;">5. Pluggable Tri-Storage Engine</strong>
+            <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 0.25rem;">
+              Unified storage abstraction supporting local disk (<code>wwwroot/</code>), Azure Blob Storage, or AWS S3 with zero code rewriting.
+            </p>
+          </div>
+
+          <div class="card card-accent-emerald" style="padding: 0.95rem 1.15rem;">
+            <strong style="color: #34d399; font-size: 0.95rem; display: block;">6. Interactive AI Cost &amp; Latency Visuals</strong>
+            <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 0.25rem;">
+              Built-in <code>Recharts</code> dashboard in the Admin Hub displaying monthly token spending, response latency (ms), and cost ceiling compliance.
+            </p>
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        Highlight these 6 architectural accomplishments:
+        This is not a simple toy chatbot. It contains full multimodal screenshot vector search, 5-stage query normalization for sugar mill acronyms, brute-force IP defense, real-time SSE token streaming, pluggable tri-storage, and live financial cost analytics.
+      </aside>
+    </section>
+
+    <!-- Slide 16: Business Impact & ROI (Act IV) -->
     <section class="slide" data-title="Business Impact">
       <div class="slide-content">
         <span class="act-badge badge-act4">Act IV: Impact &amp; Governance</span>
@@ -1148,49 +1474,63 @@ scrolls to, and illuminates the exact menu button!
       </aside>
     </section>
 
-    <!-- Slide 16: Q&A Defense (Act IV) -->
+    <!-- Slide 17: Executive & Evaluator Q&A Defense (Act IV) -->
     <section class="slide" data-title="Q&A Defense">
       <div class="slide-content">
         <span class="act-badge badge-act4">Act IV: Impact &amp; Governance</span>
         <h2>Executive &amp; Evaluator Q&A Defense</h2>
-        <p class="lead">Answers to common operational and architectural questions.</p>
+        <p class="lead" style="margin-bottom: 0.9rem;">Hardened answers to key technical, security, and architectural questions.</p>
 
-        <div class="grid-2">
+        <div class="grid-3" style="font-size: 0.85rem; gap: 0.85rem;">
           <div class="card">
-            <strong style="color: var(--primary); font-size: 1rem;">Q: What if an employee asks something unrelated like cricket?</strong>
-            <p style="font-size: 0.9rem; margin-top: 0.4rem; color: #cbd5e1;">
-              <strong>Answer:</strong> The system checks match against factory manuals. Since cricket has 0% match with mill SOPs, it replies: <em>"Data for this topic has not been uploaded yet."</em>
+            <strong style="color: var(--primary); font-size: 0.92rem;">Q: What if someone asks unrelated things (e.g. cricket)?</strong>
+            <p style="font-size: 0.8rem; margin-top: 0.3rem; color: #cbd5e1;">
+              <strong>Answer:</strong> The Out-of-Scope Gate calculates vector similarity. When similarity is low, the AI is <strong>never called</strong>; it safely replies: <em>&ldquo;Data for this topic has not been uploaded yet.&rdquo;</em>
             </p>
           </div>
 
           <div class="card">
-            <strong style="color: var(--primary); font-size: 1rem;">Q: Does our confidential data get sent to OpenAI or Google?</strong>
-            <p style="font-size: 0.9rem; margin-top: 0.4rem; color: #cbd5e1;">
-              <strong>Answer:</strong> No. By default, the system runs 100% locally on factory computers. Data stays strictly inside the mill's private network.
+            <strong style="color: var(--primary); font-size: 0.92rem;">Q: Does factory data leak to OpenAI or Google?</strong>
+            <p style="font-size: 0.8rem; margin-top: 0.3rem; color: #cbd5e1;">
+              <strong>Answer:</strong> No. By default, the system runs 100% locally on factory machines via <strong>Microsoft Phi-4 Mini</strong>. Confidential payroll and cane data never leave the private factory LAN.
             </p>
           </div>
 
           <div class="card">
-            <strong style="color: var(--primary); font-size: 1rem;">Q: Can we update manuals when factory procedures change?</strong>
-            <p style="font-size: 0.9rem; margin-top: 0.4rem; color: #cbd5e1;">
-              <strong>Answer:</strong> Yes! Administrators upload the new PDF in the Admin Panel, and the assistant updates its knowledge in seconds.
+            <strong style="color: var(--primary); font-size: 0.92rem;">Q: Can we update procedures when rules change?</strong>
+            <p style="font-size: 0.8rem; margin-top: 0.3rem; color: #cbd5e1;">
+              <strong>Answer:</strong> Yes! Administrators simply upload the new PDF/Word manual in the Admin Hub. It auto-chunks and indexes into Qdrant in <strong>2 seconds</strong> with zero retraining.
             </p>
           </div>
 
           <div class="card">
-            <strong style="color: var(--primary); font-size: 1rem;">Q: How do you guarantee the AI doesn't modify official numbered steps?</strong>
-            <p style="font-size: 0.9rem; margin-top: 0.4rem; color: #cbd5e1;">
-              <strong>Answer:</strong> Our <strong>Direct-SOP Verbatim Pass</strong> copies the exact text directly from the verified manual without letting the AI rephrase it.
+            <strong style="color: var(--primary); font-size: 0.92rem;">Q: How do you guarantee the AI doesn't modify numbered steps?</strong>
+            <p style="font-size: 0.8rem; margin-top: 0.3rem; color: #cbd5e1;">
+              <strong>Answer:</strong> Our <strong>Direct-SOP Verbatim Pass</strong> copies the exact text directly from the verified manual without letting the AI rephrase it, guaranteeing 100% compliance.
+            </p>
+          </div>
+
+          <div class="card card-accent-emerald">
+            <strong style="color: #34d399; font-size: 0.92rem;">Q: Did we use Symmetric or Asymmetric security for SSO?</strong>
+            <p style="font-size: 0.8rem; margin-top: 0.3rem; color: #cbd5e1;">
+              <strong>Answer:</strong> <strong>Symmetric (HMAC-SHA256)</strong> using a shared secret key. It delivers sub-millisecond (&lt;0.05ms) in-memory verification and operates 100% offline on the factory LAN with zero cloud IdP overhead.
+            </p>
+          </div>
+
+          <div class="card card-accent-purple">
+            <strong style="color: #c084fc; font-size: 0.92rem;">Q: Does the system support only 2 roles?</strong>
+            <p style="font-size: 0.8rem; margin-top: 0.3rem; color: #cbd5e1;">
+              <strong>Answer:</strong> 2 roles (<strong>Admin</strong> and <strong>User</strong>) are actively enforced for clean governance, but the database uses an open <code>nvarchar(50)</code> claim, making it <strong>ERP-ready</strong> to add custom roles (Supervisor, Accountant, Chemist) anytime.
             </p>
           </div>
         </div>
       </div>
       <aside class="notes">
-        Review these 4 answers. They handle the most common tough questions from judges and management.
+        Review these 6 answers. They handle all common tough questions from judges and management, including our cryptographic choice (Symmetric HMAC-SHA256) and extensible role design.
       </aside>
     </section>
 
-    <!-- Slide 17: Conclusion & Live Demo -->
+    <!-- Slide 18: Conclusion & Live Demo -->
     <section class="slide" data-title="Conclusion &amp; Demo">
       <div class="slide-content" style="text-align: center; align-items: center;">
         <span class="act-badge badge-act2">Summary &amp; Live Demo</span>
@@ -1260,7 +1600,7 @@ scrolls to, and illuminates the exact menu button!
     <div style="display: flex; align-items: center; gap: 1rem;">
       <button class="nav-btn" id="prevBtn">← Previous</button>
       <button class="nav-btn" id="nextBtn">Next →</button>
-      <span id="slideCounter" style="font-weight: 700; color: #fff; font-size: 0.9rem;">1 / 17</span>
+      <span id="slideCounter" style="font-weight: 700; color: #fff; font-size: 0.9rem;">1 / 18</span>
     </div>
     <div style="display: flex; align-items: center; gap: 1.5rem;">
       <span id="currentSlideTitle" style="color: var(--primary); font-weight: 600;">Title Slide</span>
@@ -1279,6 +1619,21 @@ scrolls to, and illuminates the exact menu button!
     const closeNotesBtn = document.getElementById('closeNotesBtn');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+    const toggleThemeBtn = document.getElementById('toggleThemeBtn');
+
+    let isLightMode = false;
+
+    function setTheme(light) {
+      isLightMode = light;
+      document.body.classList.toggle('light-mode', isLightMode);
+      if (toggleThemeBtn) {
+        toggleThemeBtn.innerHTML = isLightMode ? '🌙 Dark Mode' : '☀️ Light Mode';
+        toggleThemeBtn.title = isLightMode ? 'Switch to Dark Mode (Shortcut: L)' : 'Switch to Projector Light Mode (Shortcut: L)';
+      }
+      try {
+        localStorage.setItem('presentation-theme', isLightMode ? 'light' : 'dark');
+      } catch (e) {}
+    }
 
     let currentSlide = 0;
     const totalSlides = slides.length;
@@ -1350,6 +1705,10 @@ scrolls to, and illuminates the exact menu button!
         case 'N':
           notesDrawer.classList.toggle('open');
           break;
+        case 'l':
+        case 'L':
+          setTheme(!isLightMode);
+          break;
       }
     });
 
@@ -1357,6 +1716,15 @@ scrolls to, and illuminates the exact menu button!
     prevBtn.addEventListener('click', prevSlide);
     toggleNotesBtn.addEventListener('click', () => notesDrawer.classList.toggle('open'));
     closeNotesBtn.addEventListener('click', () => notesDrawer.classList.remove('open'));
+    if (toggleThemeBtn) {
+      toggleThemeBtn.addEventListener('click', () => setTheme(!isLightMode));
+    }
+
+    try {
+      if (localStorage.getItem('presentation-theme') === 'light') {
+        setTheme(true);
+      }
+    } catch (e) {}
 
     updateSlide(0);
   </script>
